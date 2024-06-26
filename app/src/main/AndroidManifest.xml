@@ -13,8 +13,39 @@
         android:theme="@style/Theme.DIabFitApp"
         tools:targetApi="31">
         <activity
-            android:name=".nutrition_tracking_activity"
+            android:name=".ProgressMonitoring"
             android:exported="false" />
+        <activity
+            android:name=".PersonaliseWorkout"
+            android:exported="false" />
+        <activity
+            android:name=".EmergencyAlerts"
+            android:exported="false" />
+        <activity
+            android:name=".MedicationReminders"
+            android:exported="false" />
+        <activity
+            android:name=".HealthInsights"
+            android:exported="false" />
+        <activity
+            android:name=".SugerLogging"
+            android:exported="false" />
+        <activity
+            android:name=".CommunityForum"
+            android:exported="false" />
+        <activity
+            android:name=".DiabatesEducation"
+            android:exported="false" />
+        <activity
+            android:name=".CGCount"
+            android:exported="false" />
+        <activity
+            android:name=".MealPlanning"
+            android:exported="false" />
+        <activity
+            android:name=".FoodDatabase"
+            android:exported="false" />
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -24,7 +55,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".EducationSupportActivity" />
+        <activity android:name=".nutrition_tracking_activity" />
+        <activity android:name=".exercise_plans_activity" />
+        <activity android:name=".HealthMonitoringActivity" />
     </application>
 
 </manifest>

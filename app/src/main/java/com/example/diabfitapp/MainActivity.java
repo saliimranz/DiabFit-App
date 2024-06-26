@@ -21,36 +21,32 @@ public class MainActivity extends AppCompatActivity {
         nutritionTrackingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigate to Personalized Nutrition Tracking Activity
-                // Intent intent = new Intent(MainActivity.this, NutritionTrackingActivity.class);
-                // startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, nutrition_tracking_activity.class);
+                startActivity(intent);
             }
         });
 
         exercisePlansButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigate to Exercise and Workout Plans Activity
-                // Intent intent = new Intent(MainActivity.this, ExercisePlansActivity.class);
-                // startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, exercise_plans_activity.class);
+                startActivity(intent);
             }
         });
 
         healthMonitoringButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigate to Health Monitoring and Alerts Activity
-                // Intent intent = new Intent(MainActivity.this, HealthMonitoringActivity.class);
-                // startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, HealthMonitoringActivity.class);
+                startActivity(intent);
             }
         });
 
         educationSupportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigate to Educational Resources and Community Support Activity
-                // Intent intent = new Intent(MainActivity.this, EducationSupportActivity.class);
-                // startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, EducationSupportActivity.class);
+                startActivity(intent);
             }
         });
     }

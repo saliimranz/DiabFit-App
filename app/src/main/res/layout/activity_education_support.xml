@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".nutrition_tracking_activity">
+    tools:context=".EducationSupportActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -16,41 +16,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="?attr/colorPrimary"
-        app:title="Nutrition Tracking"
+        app:title="Education Support"
         app:titleTextColor="@android:color/white" />
 
     <Button
-        android:id="@+id/btn_food_database"
+        android:id="@+id/btn_diabetes_education"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Food Database"
+        android:text="Diabetes Education"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintVertical_bias="0.211" />
+        app:layout_constraintVertical_bias="0.32" />
 
     <Button
-        android:id="@+id/btn_meal_planning"
+        android:id="@+id/btn_community_forum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Meal Planning"
+        android:text="Community Forum"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_food_database"
-        app:layout_constraintVertical_bias="0.13999999" />
-
-    <Button
-        android:id="@+id/btn_cg_counting"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CG Counting"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_meal_planning"
-        app:layout_constraintVertical_bias="0.22000003" />
+        app:layout_constraintTop_toBottomOf="@id/btn_diabetes_education"
+        app:layout_constraintVertical_bias="0.120000005" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
