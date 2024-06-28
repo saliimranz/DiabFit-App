@@ -40,6 +40,22 @@ public class FoodDatabaseFragment extends Fragment {
         foodItems.add(new FoodItem("Scrambled Eggs", 102, R.drawable.ic_scrambled_eggs));
         foodItems.add(new FoodItem("Apple", 96, R.drawable.ic_apple));
         foodItems.add(new FoodItem("Avocado", 456, R.drawable.ic_avocado));
+        foodItems.add(new FoodItem("Egg, boiled", 78, R.drawable.ic_egg_boiled));
+        foodItems.add(new FoodItem("Scrambled Eggs", 102, R.drawable.ic_scrambled_eggs));
+        foodItems.add(new FoodItem("Apple", 96, R.drawable.ic_apple));
+        foodItems.add(new FoodItem("Avocado", 456, R.drawable.ic_avocado));
+        foodItems.add(new FoodItem("Egg, boiled", 78, R.drawable.ic_egg_boiled));
+        foodItems.add(new FoodItem("Scrambled Eggs", 102, R.drawable.ic_scrambled_eggs));
+        foodItems.add(new FoodItem("Apple", 96, R.drawable.ic_apple));
+        foodItems.add(new FoodItem("Avocado", 456, R.drawable.ic_avocado));
+        foodItems.add(new FoodItem("Egg, boiled", 78, R.drawable.ic_egg_boiled));
+        foodItems.add(new FoodItem("Scrambled Eggs", 102, R.drawable.ic_scrambled_eggs));
+        foodItems.add(new FoodItem("Apple", 96, R.drawable.ic_apple));
+        foodItems.add(new FoodItem("Avocado", 456, R.drawable.ic_avocado));
+        foodItems.add(new FoodItem("Egg, boiled", 78, R.drawable.ic_egg_boiled));
+        foodItems.add(new FoodItem("Scrambled Eggs", 102, R.drawable.ic_scrambled_eggs));
+        foodItems.add(new FoodItem("Apple", 96, R.drawable.ic_apple));
+        foodItems.add(new FoodItem("Avocado", 456, R.drawable.ic_avocado));
         // Add more items as needed
         return foodItems;
     }
