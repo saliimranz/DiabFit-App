@@ -12,9 +12,11 @@ import java.util.List;
 public class TutorialAdapter extends RecyclerView.Adapter<TutorialAdapter.TutorialViewHolder> {
 
     private List<Tutorial> tutorialList;
+    private OnItemClickListener listener;
 
-    public TutorialAdapter(List<Tutorial> tutorialList) {
+    public TutorialAdapter(List<Tutorial> tutorialList, OnItemClickListener listener) {
         this.tutorialList = tutorialList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -27,14 +29,20 @@ public class TutorialAdapter extends RecyclerView.Adapter<TutorialAdapter.Tutori
     @Override
     public void onBindViewHolder(@NonNull TutorialViewHolder holder, int position) {
         Tutorial tutorial = tutorialList.get(position);
-        holder.tutorialImageView.setImageResource(tutorial.getImageResId());
+        int imageResId = holder.itemView.getContext().getResources().getIdentifier(tutorial.getImageName(), "drawable", holder.itemView.getContext().getPackageName());
+        holder.tutorialImageView.setImageResource(imageResId);
         holder.tutorialTitleTextView.setText(tutorial.getTitle());
-        holder.tutorialDescriptionTextView.setText(tutorial.getDescription());
+        holder.tutorialDescriptionTextView.setText(tutorial.getDescription().substring(0, Math.min(100, tutorial.getDescription().length())) + "...");
+        holder.itemView.setOnClickListener(v -> listener.onItemClick(tutorial));
     }
 
     @Override
     public int getItemCount() {
         return tutorialList.size();
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Tutorial tutorial);
     }
 
     static class TutorialViewHolder extends RecyclerView.ViewHolder {
