@@ -6,16 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".FoodDatabaseFragment">
 
-    <EditText
-        android:id="@+id/search_edit_text"
-        android:layout_width="0dp"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_text"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Search for a food"
+        android:queryHint="Search for food items"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
 
     <com.android.car.ui.toolbar.TabLayout
         android:id="@+id/tab_layout"
@@ -25,34 +24,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/search_text"
         app:layout_constraintVertical_bias="0.7"
         app:tabMode="fixed">
+
+        <Button
+            android:id="@+id/add_new_item_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add New Item"
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="707dp"
+            android:layout_height="match_parent"
             android:padding="16dp"
             android:visibility="visible" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_frequent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Frequent" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_recent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Recent" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_favorites"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Favorites" />
 
     </com.android.car.ui.toolbar.TabLayout>
 

@@ -9,6 +9,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,20 +31,43 @@ public class ArticlesFragment extends Fragment {
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new ArticleAdapter(getDummyData()));
+        recyclerView.setAdapter(new ArticleAdapter(loadArticles(), this::onArticleClicked));
     }
 
-    private List<Article> getDummyData() {
+    private List<Article> loadArticles() {
         List<Article> articles = new ArrayList<>();
-        articles.add(new Article("Title 1", "Description 1", R.drawable.ic_article_placeholder));
-        articles.add(new Article("Title 2", "Description 2", R.drawable.ic_article_placeholder));
-        articles.add(new Article("Title 3", "Description 1", R.drawable.ic_article_placeholder));
-        articles.add(new Article("Title 4", "Description 2", R.drawable.ic_article_placeholder));
-        articles.add(new Article("Title 5", "Description 1", R.drawable.ic_article_placeholder));
-        articles.add(new Article("Title 6", "Description 2", R.drawable.ic_article_placeholder));
-        articles.add(new Article("Title 7", "Description 1", R.drawable.ic_article_placeholder));
-        articles.add(new Article("Title 8", "Description 2", R.drawable.ic_article_placeholder));
-        // Add more dummy articles
+        try {
+            InputStream inputStream = getContext().getAssets().open("articles.json");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            StringBuilder jsonString = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                jsonString.append(line);
+            }
+            JSONObject jsonObject = new JSONObject(jsonString.toString());
+            JSONArray jsonArray = jsonObject.getJSONArray("data");
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONArray articleArray = jsonArray.getJSONArray(i);
+                String title = articleArray.getString(0);
+                String author = articleArray.getString(1);
+                String date = articleArray.getString(2);
+                String content = articleArray.getString(3);
+                String imageResName = articleArray.getString(4);
+
+                articles.add(new Article(title, author, date, content, imageResName));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return articles;
+    }
+
+    private void onArticleClicked(Article article) {
+        FullArticleFragment fullArticleFragment = FullArticleFragment.newInstance(article);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fullArticleFragment)
+                .addToBackStack(null)
+                .commit();
     }
 }

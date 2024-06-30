@@ -2,24 +2,30 @@ package com.example.diabfitapp;
 
 public class FoodItem {
     private String name;
-    private int calories;
-    private int imageResourceId;
+    private int glycemicIndex;
+    private int carbsPer100g;
+    private int sizeOfServing;
 
-    public FoodItem(String name, int calories, int imageResourceId) {
+    public FoodItem(String name, int glycemicIndex, int carbsPer100g, int sizeOfServing) {
         this.name = name;
-        this.calories = calories;
-        this.imageResourceId = imageResourceId;
+        this.glycemicIndex = glycemicIndex;
+        this.carbsPer100g = carbsPer100g;
+        this.sizeOfServing = sizeOfServing;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getCalories() {
-        return calories;
+    public int getGlycemicIndex() {
+        return glycemicIndex;
     }
 
-    public int getImageResourceId() {
-        return imageResourceId;
+    public int getCarbsPer100g() {
+        return carbsPer100g;
+    }
+
+    public int getSizeOfServing() {
+        return sizeOfServing;
     }
 }

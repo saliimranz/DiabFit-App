@@ -2,24 +2,36 @@ package com.example.diabfitapp;
 
 public class Article {
     private String title;
-    private String description;
-    private int imageResId;
+    private String author;
+    private String date;
+    private String content;
+    private String imageResName;
 
-    public Article(String title, String description, int imageResId) {
+    public Article(String title, String author, String date, String content, String imageResName) {
         this.title = title;
-        this.description = description;
-        this.imageResId = imageResId;
+        this.author = author;
+        this.date = date;
+        this.content = content;
+        this.imageResName = imageResName;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getAuthor() {
+        return author;
     }
 
-    public int getImageResId() {
-        return imageResId;
+    public String getDate() {
+        return date;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getImageResName() {
+        return imageResName;
     }
 }

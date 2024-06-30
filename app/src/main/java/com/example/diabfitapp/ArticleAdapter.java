@@ -12,9 +12,11 @@ import java.util.List;
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder> {
 
     private List<Article> articleList;
+    private OnItemClickListener listener;
 
-    public ArticleAdapter(List<Article> articleList) {
+    public ArticleAdapter(List<Article> articleList, OnItemClickListener listener) {
         this.articleList = articleList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -27,14 +29,20 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
     @Override
     public void onBindViewHolder(@NonNull ArticleViewHolder holder, int position) {
         Article article = articleList.get(position);
-        holder.articleImageView.setImageResource(article.getImageResId());
+        int imageResId = holder.itemView.getContext().getResources().getIdentifier(article.getImageResName(), "drawable", holder.itemView.getContext().getPackageName());
+        holder.articleImageView.setImageResource(imageResId);
         holder.articleTitleTextView.setText(article.getTitle());
-        holder.articleDescriptionTextView.setText(article.getDescription());
+        holder.articleDescriptionTextView.setText(article.getContent().substring(0, Math.min(100, article.getContent().length())) + "...");
+        holder.itemView.setOnClickListener(v -> listener.onItemClick(article));
     }
 
     @Override
     public int getItemCount() {
         return articleList.size();
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Article article);
     }
 
     static class ArticleViewHolder extends RecyclerView.ViewHolder {
