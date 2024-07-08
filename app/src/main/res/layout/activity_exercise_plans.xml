@@ -34,7 +34,7 @@
       android:id="@+id/btn_progress_monitoring"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="Progress_Monitoring"
+      android:text="Progress Monitoring"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"

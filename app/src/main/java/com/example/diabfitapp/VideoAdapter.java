@@ -1,3 +1,4 @@
+// VideoAdapter.java
 package com.example.diabfitapp;
 
 import android.view.LayoutInflater;
@@ -11,10 +12,16 @@ import java.util.List;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
 
-    private List<Video> videoList;
+    public interface OnItemClickListener {
+        void onItemClick(VideoItem videoItem);
+    }
 
-    public VideoAdapter(List<Video> videoList) {
+    private List<VideoItem> videoList;
+    private OnItemClickListener listener;
+
+    public VideoAdapter(List<VideoItem> videoList, OnItemClickListener listener) {
         this.videoList = videoList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -26,10 +33,12 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     @Override
     public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
-        Video article = videoList.get(position);
-        holder.videoImageView.setImageResource(article.getImageResId());
-        holder.videoTitleTextView.setText(article.getTitle());
-        holder.videoDescriptionTextView.setText(article.getDescription());
+        VideoItem videoItem = videoList.get(position);
+        holder.videoImageView.setImageResource(videoItem.getImageResId());
+        holder.videoTitleTextView.setText(videoItem.getTitle());
+        holder.videoDescriptionTextView.setText(videoItem.getDescription());
+
+        holder.itemView.setOnClickListener(v -> listener.onItemClick(videoItem));
     }
 
     @Override
@@ -44,7 +53,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
         public VideoViewHolder(@NonNull View itemView) {
             super(itemView);
-            videoImageView = itemView.findViewById(R.id.video_image);
+            videoImageView = itemView.findViewById(R.id.imageView);
             videoTitleTextView = itemView.findViewById(R.id.video_title);
             videoDescriptionTextView = itemView.findViewById(R.id.video_description);
         }
