@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainFragment">
+
+    <Button
+        android:id="@+id/btn_nutrition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="226dp"
+        android:text="Nutrition Tracking" />
+
+    <Button
+        android:id="@+id/btn_exercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_nutrition"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:text="Exercise Plans" />
+
+    <Button
+        android:id="@+id/btn_health_monitoring"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_exercise"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:text="Health Monitoring" />
+
+    <Button
+        android:id="@+id/btn_education"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_health_monitoring"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
+        android:text="Education Support" />
+</RelativeLayout>
