@@ -3,6 +3,7 @@ package com.example.diabfitapp;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.Fragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,13 +20,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void openNutritionTrackingFragment() {
-        NutritionTrackingFragment fragment = new NutritionTrackingFragment();
+    public void replaceFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
 
     @Override
     public boolean onSupportNavigateUp() {

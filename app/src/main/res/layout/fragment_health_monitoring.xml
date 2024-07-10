@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".HealthMonitoringFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:title="Health Monitoring"
+        app:titleTextColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btn_blood_sugar_logging"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="Blood Sugar Logging" />
+
+    <Button
+        android:id="@+id/btn_health_insights"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_blood_sugar_logging"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:text="Health Insights" />
+
+    <Button
+        android:id="@+id/btn_medication_reminders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_health_insights"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:text="Medication Reminders" />
+
+    <Button
+        android:id="@+id/btn_emergency_alerts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_medication_reminders"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:text="Emergency Alerts" />
+</RelativeLayout>

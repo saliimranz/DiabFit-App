@@ -39,24 +39,21 @@ public class NutritionTrackingFragment extends Fragment {
         foodDatabaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), FoodDatabase.class);
-                startActivity(intent);
+                ((MainActivity) getActivity()).replaceFragment(new FoodDatabaseFragment());
             }
         });
 
         mealPlanningButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MealPlanning.class);
-                startActivity(intent);
+                ((MainActivity) getActivity()).replaceFragment(new MealPlannerFragment());
             }
         });
 
         cgCountingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CGCount.class);
-                startActivity(intent);
+                ((MainActivity) getActivity()).replaceFragment(new CGCountFragment());
             }
         });
 

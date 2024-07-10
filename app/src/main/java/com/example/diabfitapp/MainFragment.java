@@ -25,31 +25,28 @@ public class MainFragment extends Fragment {
         nutritionTrackingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) getActivity()).openNutritionTrackingFragment();
+                ((MainActivity) getActivity()).replaceFragment(new NutritionTrackingFragment());
             }
         });
 
         exercisePlansButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), exercise_plans_activity.class);
-                startActivity(intent);
+                ((MainActivity) getActivity()).replaceFragment(new ExercisePlansFragment());
             }
         });
 
         healthMonitoringButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), HealthMonitoringActivity.class);
-                startActivity(intent);
+                ((MainActivity) getActivity()).replaceFragment(new HealthMonitoringFragment());
             }
         });
 
         educationSupportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), EducationSupportActivity.class);
-                startActivity(intent);
+                ((MainActivity) getActivity()).replaceFragment(new EducationSupportFragment());
             }
         });
 

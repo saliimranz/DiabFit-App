@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.SearchView;
 import java.util.ArrayList;
 import java.util.List;
+import androidx.appcompat.widget.Toolbar;
 
 public class FoodDatabaseFragment extends Fragment {
 
@@ -35,6 +36,14 @@ public class FoodDatabaseFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        toolbar.setTitle("Food Database");
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(v -> {
+            // Navigate back to NutritionTrackingFragment
+            requireActivity().getSupportFragmentManager().popBackStack();
+        });
 
         // Load food data
         List<FoodItem> foodItems = loadFoodData();
