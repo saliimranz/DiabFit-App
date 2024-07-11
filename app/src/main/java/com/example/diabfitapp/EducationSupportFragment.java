@@ -22,6 +22,7 @@ public class EducationSupportFragment extends Fragment {
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(v -> requireActivity().onBackPressed());
+        toolbar.setTitle("Education Support");
 
         // Buttons
         Button diabetesEducationButton = view.findViewById(R.id.btn_diabetes_education);
@@ -32,10 +33,12 @@ public class EducationSupportFragment extends Fragment {
             ((MainActivity) getActivity()).replaceFragment(new DiabatesEducationFragment());
         });
 
-        communityForumButton.setOnClickListener(v -> {
-            // Handle Community Forum button click
-            Intent intent = new Intent(getActivity(), CommunityForum.class);
-            startActivity(intent);
+        communityForumButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle Community Forum button click
+                ((MainActivity) getActivity()).replaceFragment(new PostListFragment());
+            }
         });
 
         return view;
