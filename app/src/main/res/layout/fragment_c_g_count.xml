@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".nutrition.food.CGCountFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -18,4 +18,63 @@
         app:title="Carbs and Glycemic Counter"
         app:titleTextColor="@android:color/white" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/foodEatenList"
+        android:layout_width="400dp"
+        android:layout_height="318dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@id/fabAddFood"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_bias="0.754"
+        android:background="@drawable/border_recycler_view" />
+
+    <com.example.diabfitapp.nutrition.food.CircularProgressView
+        android:id="@+id/circularProgressView"
+        android:layout_width="175dp"
+        android:layout_height="142dp"
+        app:layout_constraintBottom_toTopOf="@+id/foodEatenList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.169" />
+
+    <TextView
+        android:id="@+id/carbsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/foodEatenList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.218"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.925" />
+
+    <TextView
+        android:id="@+id/overTargetMessage"
+        android:layout_width="199dp"
+        android:layout_height="58dp"
+        android:text="You are above your carbs limit. Try not to eat too much."
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/foodEatenList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/circularProgressView"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.425" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

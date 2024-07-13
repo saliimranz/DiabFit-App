@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/item_background">
+
+    <TextView
+        android:id="@+id/food_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Food Name"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/carbs_per_100g"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Carbs/100g"
+            android:textSize="14sp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/servings_eaten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Servings Eaten"
+            android:textSize="14sp"
+            android:textColor="@android:color/holo_green_dark"
+            android:layout_gravity="end"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/serving_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Servings Size"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/glycemic_index"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Glycemic Index"
+        android:textSize="14sp"
+        android:textColor="@android:color/holo_orange_dark"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/carbs_intake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carbs Intake"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"/>
+</LinearLayout>
