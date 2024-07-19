@@ -12,7 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.diabfitapp.nutrition.food.CGCountFragment;
 import com.example.diabfitapp.nutrition.food.FoodItem;
 
-import com.example.diabfitapp.database.EatenDatabaseHelper;
+import com.example.diabfitapp.nutrition.food.EatenDatabaseHelper;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 

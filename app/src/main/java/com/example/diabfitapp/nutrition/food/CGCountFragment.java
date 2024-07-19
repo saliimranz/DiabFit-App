@@ -19,7 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import com.example.diabfitapp.database.EatenDatabaseHelper;
+import com.example.diabfitapp.nutrition.food.EatenDatabaseHelper;
 import java.util.Calendar;
 
 import java.util.ArrayList;
