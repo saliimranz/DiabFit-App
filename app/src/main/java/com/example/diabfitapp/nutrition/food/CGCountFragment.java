@@ -13,13 +13,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.diabfitapp.R;
+import com.example.diabfitapp.main.MainActivity;
 import com.example.diabfitapp.nutrition.food.CircularProgressView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import com.example.diabfitapp.database.EatenDatabaseHelper;
+import java.util.Calendar;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CGCountFragment extends Fragment {
+
+    private EatenDatabaseHelper dbHelper;
+    private List<FoodEatenItem> foodEatenItems;
+    private FoodEatenAdapter adapter;
 
     private CircularProgressView circularProgressView;
     private TextView carbsTextView;
@@ -37,6 +47,10 @@ public class CGCountFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        dbHelper = new EatenDatabaseHelper(getContext());
+        foodEatenItems = new ArrayList<>();
+        adapter = new FoodEatenAdapter(foodEatenItems);
+
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         toolbar.setTitle("Carbs and Glycemic Counter");
         toolbar.setNavigationIcon(R.drawable.ic_back);
@@ -48,16 +62,67 @@ public class CGCountFragment extends Fragment {
 
         RecyclerView foodEatenList = view.findViewById(R.id.foodEatenList);
         foodEatenList.setLayoutManager(new LinearLayoutManager(requireContext()));
-        FoodEatenAdapter adapter = new FoodEatenAdapter(getSampleData());
+        //FoodEatenAdapter adapter = new FoodEatenAdapter(getSampleData());
         foodEatenList.setAdapter(adapter);
 
+        loadItemsFromDatabase();
+
         FloatingActionButton fabAddFood = view.findViewById(R.id.fabAddFood);
-        fabAddFood.setOnClickListener(v -> {
-            // Handle adding new food item
-            addFoodItem();
+        fabAddFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity) getActivity()).replaceFragment(new FoodDatabaseFragment());
+            }
         });
 
         updateProgress();
+    }
+
+    private void loadItemsFromDatabase() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        // Today's date range
+        Calendar today = Calendar.getInstance();
+        today.set(Calendar.HOUR_OF_DAY, 0);
+        today.set(Calendar.MINUTE, 0);
+        today.set(Calendar.SECOND, 0);
+        long startOfDay = today.getTimeInMillis();
+        long endOfDay = startOfDay + 24 * 60 * 60 * 1000;
+
+        Cursor cursor = db.query(
+                EatenDatabaseHelper.TABLE_NAME,
+                null,
+                EatenDatabaseHelper.COLUMN_DATE + " BETWEEN ? AND ?",
+                new String[]{String.valueOf(startOfDay), String.valueOf(endOfDay)},
+                null,
+                null,
+                null
+        );
+
+        while (cursor.moveToNext()) {
+            String name = cursor.getString(cursor.getColumnIndexOrThrow(EatenDatabaseHelper.COLUMN_NAME));
+            int carbs = cursor.getInt(cursor.getColumnIndexOrThrow(EatenDatabaseHelper.COLUMN_CARBS));
+            int servings = cursor.getInt(cursor.getColumnIndexOrThrow(EatenDatabaseHelper.COLUMN_SERVINGS));
+            int glycemicIndex = cursor.getInt(cursor.getColumnIndexOrThrow(EatenDatabaseHelper.COLUMN_GI));
+            long date = cursor.getLong(cursor.getColumnIndexOrThrow(EatenDatabaseHelper.COLUMN_DATE));
+
+            FoodEatenItem item = new FoodEatenItem(name, carbs, servings, glycemicIndex, calculateCarbsIntake(carbs, servings), getItemSizeFromDB(name));
+            foodEatenItems.add(item);
+        }
+
+        cursor.close();
+        db.close();
+        adapter.notifyDataSetChanged();
+    }
+
+    private int getItemSizeFromDB(String name) {
+        // Fetch and return the item size from your existing database or data source
+        return 0; // Placeholder, replace with actual implementation
+    }
+
+
+    private int calculateCarbsIntake(int carbsPer100g, int servings) {
+        return (carbsPer100g * servings) / 100;
     }
 
     private List<FoodEatenItem> getSampleData() {
@@ -67,12 +132,6 @@ public class CGCountFragment extends Fragment {
         items.add(new FoodEatenItem("Banana", 23, 15, 60, 22, 10));
         items.add(new FoodEatenItem("Bread", 50, 2, 70, 236,5));
         return items;
-    }
-
-    private void addFoodItem() {
-        // Example function to add a food item and update the progress
-        totalCarbs += 30; // Example added carbs
-        updateProgress();
     }
 
     private void updateProgress() {

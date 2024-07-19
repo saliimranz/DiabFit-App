@@ -41,5 +41,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation("jp.wasabeef:blurry:4.0.0")
     // Other dependencies
 }
