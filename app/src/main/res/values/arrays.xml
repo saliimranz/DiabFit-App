@@ -1,0 +1,7 @@
+<resources>
+    <string-array name="time_frame_array">
+        <item>Today</item>
+        <item>Yesterday</item>
+        <item>All</item>
+    </string-array>
+</resources>

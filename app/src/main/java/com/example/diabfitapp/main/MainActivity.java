@@ -47,10 +47,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addFoodToCGCountFragment(FoodItem item, int servingsEaten) {
-        Log.d("MainActivity", "addFoodToCGCountFragment called");
-        if (cgCountFragment != null) {
-            saveFoodItemToDatabase(item, servingsEaten);
-            Log.d("MainActivity", "Item added to cg count fragment: " + item.getName());
+        Log.d("MainActivity", "addFoodToCGCountFragment called with servingsEaten: " + servingsEaten);
+
+        // Save to SQLite database
+        EatenDatabaseHelper dbHelper = new EatenDatabaseHelper(this);
+        dbHelper.addEatenItem(item, servingsEaten);
+
+        // Update CGCountFragment if it's currently displayed
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        CGCountFragment fragment = (CGCountFragment) fragmentManager.findFragmentByTag("CGCountFragment");
+        if (fragment != null) {
+            fragment.updateFoodList();
+            Log.d("MainActivity", "Item added to CGCountFragment: " + item.getName());
         } else {
             Log.d("MainActivity", "CGCountFragment not found");
         }
@@ -62,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
         values.put(EatenDatabaseHelper.COLUMN_NAME, item.getName());
         values.put(EatenDatabaseHelper.COLUMN_CARBS, item.getCarbsPer100g());
         values.put(EatenDatabaseHelper.COLUMN_SERVINGS, servingsEaten);
-        values.put(EatenDatabaseHelper.COLUMN_GI, item.getGlycemicIndex());
-        values.put(EatenDatabaseHelper.COLUMN_DATE, System.currentTimeMillis());
+        values.put(EatenDatabaseHelper.COLUMN_GLYCEMIC_INDEX, item.getGlycemicIndex());
+        values.put(EatenDatabaseHelper.COLUMN_TIMESTAMP, System.currentTimeMillis());
 
         db.insert(EatenDatabaseHelper.TABLE_NAME, null, values);
         db.close();

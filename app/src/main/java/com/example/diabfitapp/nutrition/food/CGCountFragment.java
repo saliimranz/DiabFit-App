@@ -1,10 +1,19 @@
 package com.example.diabfitapp.nutrition.food;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -14,22 +23,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.diabfitapp.R;
 import com.example.diabfitapp.main.MainActivity;
-import com.example.diabfitapp.nutrition.food.CircularProgressView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import com.example.diabfitapp.nutrition.food.EatenDatabaseHelper;
-import java.util.Calendar;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CGCountFragment extends Fragment {
 
+    private Spinner timeFrameSpinner;
     private EatenDatabaseHelper dbHelper;
     private List<FoodEatenItem> foodEatenItems;
-    private FoodEatenAdapter adapter;
+    private FoodEatenAdapter foodEatenAdapter;
 
     private CircularProgressView circularProgressView;
     private TextView carbsTextView;
@@ -47,9 +51,13 @@ public class CGCountFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        dbHelper = new EatenDatabaseHelper(getContext());
+        timeFrameSpinner = view.findViewById(R.id.timeFrameSpinner);
+        ArrayAdapter<CharSequence> timeFrameAdapter = ArrayAdapter.createFromResource(getContext(), R.array.time_frame_array, android.R.layout.simple_spinner_item);
+        timeFrameAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        timeFrameSpinner.setAdapter(timeFrameAdapter);
+
         foodEatenItems = new ArrayList<>();
-        adapter = new FoodEatenAdapter(foodEatenItems);
+        foodEatenAdapter = new FoodEatenAdapter(foodEatenItems);
 
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         toolbar.setTitle("Carbs and Glycemic Counter");
@@ -62,57 +70,68 @@ public class CGCountFragment extends Fragment {
 
         RecyclerView foodEatenList = view.findViewById(R.id.foodEatenList);
         foodEatenList.setLayoutManager(new LinearLayoutManager(requireContext()));
-        //FoodEatenAdapter adapter = new FoodEatenAdapter(getSampleData());
-        foodEatenList.setAdapter(adapter);
-
-        loadItemsFromDatabase();
+        foodEatenList.setAdapter(foodEatenAdapter);
 
         FloatingActionButton fabAddFood = view.findViewById(R.id.fabAddFood);
-        fabAddFood.setOnClickListener(new View.OnClickListener() {
+        fabAddFood.setOnClickListener(v -> ((MainActivity) getActivity()).replaceFragment(new FoodDatabaseFragment()));
+
+        timeFrameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                ((MainActivity) getActivity()).replaceFragment(new FoodDatabaseFragment());
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                updateFoodList();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Do nothing
             }
         });
 
-        updateProgress();
+        Button changeCarbsLimitButton = view.findViewById(R.id.changeCarbsLimitButton);
+        changeCarbsLimitButton.setOnClickListener(v -> showChangeCarbsLimitDialog());
+
+        // Retrieve the targetCarbs from SharedPreferences
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("app_prefs", Context.MODE_PRIVATE);
+        targetCarbs = sharedPreferences.getFloat("targetCarbs", 150.0f); // Default is 150.0f if not set
+
+        updateFoodList();
     }
 
-    private void loadItemsFromDatabase() {
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+    private void showChangeCarbsLimitDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_change_carbs_limit, null);
+        builder.setView(dialogView);
 
-        // Today's date range
-        Calendar today = Calendar.getInstance();
-        today.set(Calendar.HOUR_OF_DAY, 0);
-        today.set(Calendar.MINUTE, 0);
-        today.set(Calendar.SECOND, 0);
-        long startOfDay = today.getTimeInMillis();
-        long endOfDay = startOfDay + 24 * 60 * 60 * 1000;
+        final EditText editTextNewTarget = dialogView.findViewById(R.id.editTextNewTarget);
+        Button buttonConfirm = dialogView.findViewById(R.id.buttonConfirm);
 
-        Cursor cursor = db.query(
-                EatenDatabaseHelper.TABLE_NAME,
-                null,
-                EatenDatabaseHelper.COLUMN_DATE + " BETWEEN ? AND ?",
-                new String[]{String.valueOf(startOfDay), String.valueOf(endOfDay)},
-                null,
-                null,
-                null
-        );
+        final AlertDialog dialog = builder.create();
 
-        while (cursor.moveToNext()) {
-            String name = cursor.getString(cursor.getColumnIndexOrThrow(EatenDatabaseHelper.COLUMN_NAME));
-            int carbs = cursor.getInt(cursor.getColumnIndexOrThrow(EatenDatabaseHelper.COLUMN_CARBS));
-            int servings = cursor.getInt(cursor.getColumnIndexOrThrow(EatenDatabaseHelper.COLUMN_SERVINGS));
-            int glycemicIndex = cursor.getInt(cursor.getColumnIndexOrThrow(EatenDatabaseHelper.COLUMN_GI));
-            long date = cursor.getLong(cursor.getColumnIndexOrThrow(EatenDatabaseHelper.COLUMN_DATE));
+        buttonConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String newTargetString = editTextNewTarget.getText().toString();
+                if (!newTargetString.isEmpty()) {
+                    float newTarget = Float.parseFloat(newTargetString);
+                    updateTargetCarbs(newTarget);
+                    dialog.dismiss();
+                }
+            }
+        });
 
-            FoodEatenItem item = new FoodEatenItem(name, carbs, servings, glycemicIndex, calculateCarbsIntake(carbs, servings), getItemSizeFromDB(name));
-            foodEatenItems.add(item);
-        }
+        dialog.show();
+    }
 
-        cursor.close();
-        db.close();
-        adapter.notifyDataSetChanged();
+    private void updateTargetCarbs(float newTarget) {
+        targetCarbs = newTarget;
+        updateProgress();
+
+        // Save the new target to SharedPreferences
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("app_prefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putFloat("targetCarbs", newTarget);
+        editor.apply();
     }
 
     private int getItemSizeFromDB(String name) {
@@ -120,21 +139,25 @@ public class CGCountFragment extends Fragment {
         return 0; // Placeholder, replace with actual implementation
     }
 
-
     private int calculateCarbsIntake(int carbsPer100g, int servings) {
         return (carbsPer100g * servings) / 100;
     }
 
-    private List<FoodEatenItem> getSampleData() {
-        List<FoodEatenItem> items = new ArrayList<>();
-        // Add sample data
-        items.add(new FoodEatenItem("Apple", 14, 5, 40, 99, 20));
-        items.add(new FoodEatenItem("Banana", 23, 15, 60, 22, 10));
-        items.add(new FoodEatenItem("Bread", 50, 2, 70, 236,5));
-        return items;
+    public void updateFoodList() {
+        String selectedTimeFrame = timeFrameSpinner.getSelectedItem().toString();
+        EatenDatabaseHelper dbHelper = new EatenDatabaseHelper(getContext());
+        foodEatenItems.clear();
+        foodEatenItems.addAll(dbHelper.getEatenItems(selectedTimeFrame));
+        foodEatenAdapter.notifyDataSetChanged();
+        updateProgress();
     }
 
     private void updateProgress() {
+        float totalCarbs = 0;
+        for (FoodEatenItem item : foodEatenItems) {
+            totalCarbs += item.getCarbsIntake();
+        }
+
         circularProgressView.setProgress(totalCarbs, targetCarbs);
         carbsTextView.setText(String.format("Today: %.1f / %.1f", totalCarbs, targetCarbs));
         if (totalCarbs > targetCarbs) {

@@ -32,11 +32,11 @@ public class FoodEatenAdapter extends RecyclerView.Adapter<FoodEatenAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         FoodEatenItem item = items.get(position);
         holder.name.setText(item.getName());
-        holder.carbsPer100g.setText(String.valueOf(item.getCarbsPer100g()));
+        holder.carbsPer100g.setText("Carbs per 100g: " + String.valueOf(item.getCarbsPer100g()));
         holder.servings.setText("Amount Eaten: " + item.getServings() + "g");
-        holder.glycemicIndex.setText(String.valueOf(item.getGlycemicIndex()));
-        holder.carbsIntake.setText(String.valueOf(item.getCarbsIntake()));
-        holder.servingSize.setText(String.valueOf(item.getServingsSize())); // Adjust serving size text
+        holder.glycemicIndex.setText("Glycemic Index: " + String.valueOf(item.getGlycemicIndex()));
+        holder.carbsIntake.setText("Carbs Intake: " + String.valueOf(item.getCarbsIntake()));
+        holder.servingSize.setText("Serving Size: " + item.getServingsSize() + "g");
     }
 
     @Override

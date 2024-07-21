@@ -20,16 +20,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/foodEatenList"
-        android:layout_width="400dp"
-        android:layout_height="318dp"
+        android:layout_width="395dp"
+        android:layout_height="380dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/border_recycler_view"
         app:layout_constraintBottom_toTopOf="@id/fabAddFood"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintVertical_bias="0.754"
-        android:background="@drawable/border_recycler_view" />
+        app:layout_constraintVertical_bias="0.965" />
 
     <com.example.diabfitapp.nutrition.food.CircularProgressView
         android:id="@+id/circularProgressView"
@@ -50,10 +50,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/foodEatenList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.218"
+        app:layout_constraintHorizontal_bias="0.211"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.925" />
+        app:layout_constraintVertical_bias="0.885" />
 
     <TextView
         android:id="@+id/overTargetMessage"
@@ -77,4 +77,28 @@
         android:src="@drawable/ic_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Spinner
+        android:id="@+id/timeFrameSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/time_frame_array"
+        app:layout_constraintBottom_toTopOf="@+id/foodEatenList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.922"
+        app:layout_constraintStart_toEndOf="@+id/carbsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/overTargetMessage"
+        app:layout_constraintVertical_bias="0.838" />
+
+    <Button
+        android:id="@+id/changeCarbsLimitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Carbs Limit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fabAddFood"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodEatenList"
+        app:layout_constraintVertical_bias="0.483" />
 </androidx.constraintlayout.widget.ConstraintLayout>

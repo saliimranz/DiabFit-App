@@ -7,14 +7,16 @@ public class FoodEatenItem {
     private int glycemicIndex;
     private int carbsIntake;
     private int servingSize;
+    private long timestamp;
 
-    public FoodEatenItem(String name, int carbsPer100g, int servings, int glycemicIndex, int carbsIntake, int servingSize) {
+    public FoodEatenItem(String name, int carbsPer100g, int servings, int glycemicIndex, int carbsIntake, int servingSize, long timestamp) {
         this.name = name;
         this.carbsPer100g = carbsPer100g;
         this.servings = servings;
         this.glycemicIndex = glycemicIndex;
         this.carbsIntake = carbsIntake;
         this.servingSize = servingSize;
+        this.timestamp = timestamp;
     }
 
     public String getName() {
@@ -30,7 +32,7 @@ public class FoodEatenItem {
     }
 
     public int getServings() {
-        return servings*servingSize;
+        return servings * servingSize;
     }
 
     public int getGlycemicIndex() {
@@ -39,5 +41,9 @@ public class FoodEatenItem {
 
     public int getCarbsIntake() {
         return carbsIntake;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
     }
 }
