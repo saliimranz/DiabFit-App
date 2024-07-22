@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/medicine_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Medicine Name" />
+
+    <TimePicker
+        android:id="@+id/time_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner" />
+
+    <EditText
+        android:id="@+id/quantity_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Quantity"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/schedule_alert_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Schedule Alert" />
+
+</LinearLayout>

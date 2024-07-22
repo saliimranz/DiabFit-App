@@ -1,0 +1,114 @@
+package com.example.diabfitapp.healthmonitoring.medication;
+
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TimePicker;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.diabfitapp.R;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MedicationRemindersFragment extends Fragment {
+
+    private MedicineDatabaseHelper dbHelper;
+    private MedicineAdapter medicineAdapter;
+    private List<Medicine> medicines;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_medication_reminders, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        dbHelper = new MedicineDatabaseHelper(requireContext());
+        medicines = new ArrayList<>();
+        medicineAdapter = new MedicineAdapter(requireContext(), medicines);
+
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        toolbar.setTitle("Medication Reminders");
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(v -> {
+            requireActivity().getSupportFragmentManager().popBackStack();
+        });
+
+        Button addMedicineButton = view.findViewById(R.id.add_medicine_button);
+        addMedicineButton.setOnClickListener(v -> showAddMedicineDialog());
+
+        RecyclerView recyclerView = view.findViewById(R.id.medicine_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        recyclerView.setAdapter(medicineAdapter);
+
+        loadMedicines();
+    }
+
+    private void showAddMedicineDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_add_medicine, null);
+        builder.setView(dialogView);
+
+        EditText medicineNameInput = dialogView.findViewById(R.id.medicine_name_input);
+        TimePicker timePicker = dialogView.findViewById(R.id.time_picker);
+        EditText quantityInput = dialogView.findViewById(R.id.quantity_input);
+        Button scheduleAlertButton = dialogView.findViewById(R.id.schedule_alert_button);
+
+        AlertDialog dialog = builder.create();
+
+        scheduleAlertButton.setOnClickListener(v -> {
+            String medicineName = medicineNameInput.getText().toString();
+            int hour = timePicker.getHour();
+            int minute = timePicker.getMinute();
+            int quantity = Integer.parseInt(quantityInput.getText().toString());
+
+            saveMedicine(new Medicine(medicineName, quantity, hour, minute));
+            dialog.dismiss();
+        });
+
+        dialog.show();
+    }
+
+    private void saveMedicine(Medicine medicine) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.execSQL("INSERT INTO " + MedicineDatabaseHelper.TABLE_MEDICINES + " (" +
+                        MedicineDatabaseHelper.COLUMN_NAME + ", " +
+                        MedicineDatabaseHelper.COLUMN_QUANTITY + ", " +
+                        MedicineDatabaseHelper.COLUMN_HOUR + ", " +
+                        MedicineDatabaseHelper.COLUMN_MINUTE + ") VALUES (?, ?, ?, ?)",
+                new Object[]{medicine.getName(), medicine.getQuantity(), medicine.getHour(), medicine.getMinute()});
+        loadMedicines();
+    }
+
+    private void loadMedicines() {
+        medicines.clear();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + MedicineDatabaseHelper.TABLE_MEDICINES, null);
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(MedicineDatabaseHelper.COLUMN_ID));
+                String name = cursor.getString(cursor.getColumnIndexOrThrow(MedicineDatabaseHelper.COLUMN_NAME));
+                int quantity = cursor.getInt(cursor.getColumnIndexOrThrow(MedicineDatabaseHelper.COLUMN_QUANTITY));
+                int hour = cursor.getInt(cursor.getColumnIndexOrThrow(MedicineDatabaseHelper.COLUMN_HOUR));
+                int minute = cursor.getInt(cursor.getColumnIndexOrThrow(MedicineDatabaseHelper.COLUMN_MINUTE));
+                medicines.add(new Medicine(id, name, quantity, hour, minute));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        medicineAdapter.setMedicines(medicines);
+    }
+}
