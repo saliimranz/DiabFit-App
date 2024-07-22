@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.diabfitapp.R;
+import com.example.diabfitapp.healthmonitoring.sugerlog.SugerLoggingFragment;
 import com.example.diabfitapp.main.MainActivity;
 
 public class HealthMonitoringFragment extends Fragment {

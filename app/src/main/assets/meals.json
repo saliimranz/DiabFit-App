@@ -1,0 +1,1493 @@
+[
+  {
+    "Name": "Pancakes",
+    "Meal_Type": "Breakfast",
+    "Carbs": "38g",
+    "Calories": "250",
+    "Ingredients": {
+      "Flour": "120g",
+      "Milk": "240ml",
+      "Eggs": "2",
+      "Baking Powder": "10g",
+      "Sugar": "30g",
+      "Butter": "30g"
+    },
+    "Serving Size": "3 Pancakes",
+    "Recipe": "Mix flour, baking powder, and sugar. In a separate bowl, whisk milk and eggs. Combine both mixtures and add melted butter. Cook on a hot griddle until golden brown."
+  },
+  {
+    "Name": "Omelette",
+    "Meal_Type": "Breakfast",
+    "Carbs": "2g",
+    "Calories": "150",
+    "Ingredients": {
+      "Eggs": "3",
+      "Milk": "30ml",
+      "Cheese": "50g",
+      "Butter": "10g",
+      "Salt": "1g",
+      "Pepper": "1g"
+    },
+    "Serving Size": "1 Omelette",
+    "Recipe": "Beat eggs with milk, salt, and pepper. Melt butter in a pan, pour in the egg mixture, and cook until set. Sprinkle cheese on top and fold the omelette."
+  },
+  {
+    "Name": "Smoothie Bowl",
+    "Meal_Type": "Breakfast",
+    "Carbs": "45g",
+    "Calories": "200",
+    "Ingredients": {
+      "Banana": "1",
+      "Berries": "100g",
+      "Yogurt": "200ml",
+      "Granola": "50g",
+      "Honey": "10ml"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Blend banana, berries, and yogurt until smooth. Pour into a bowl and top with granola and a drizzle of honey."
+  },
+  {
+    "Name": "Avocado Toast",
+    "Meal_Type": "Breakfast",
+    "Carbs": "20g",
+    "Calories": "250",
+    "Ingredients": {
+      "Bread": "2 slices",
+      "Avocado": "1",
+      "Salt": "1g",
+      "Pepper": "1g",
+      "Lemon Juice": "5ml"
+    },
+    "Serving Size": "2 Slices",
+    "Recipe": "Toast the bread slices. Mash the avocado with salt, pepper, and lemon juice. Spread the mixture on the toasted bread."
+  },
+  {
+    "Name": "Greek Yogurt with Honey",
+    "Meal_Type": "Breakfast",
+    "Carbs": "20g",
+    "Calories": "150",
+    "Ingredients": {
+      "Greek Yogurt": "200ml",
+      "Honey": "20ml",
+      "Nuts": "30g"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Pour the Greek yogurt into a bowl. Drizzle honey on top and sprinkle with nuts."
+  },
+  {
+    "Name": "Breakfast Burrito",
+    "Meal_Type": "Breakfast",
+    "Carbs": "35g",
+    "Calories": "300",
+    "Ingredients": {
+      "Tortilla": "1",
+      "Scrambled Eggs": "2",
+      "Cheese": "50g",
+      "Salsa": "30ml",
+      "Avocado": "50g"
+    },
+    "Serving Size": "1 Burrito",
+    "Recipe": "Place scrambled eggs, cheese, salsa, and avocado in the center of the tortilla. Roll up the tortilla and serve warm."
+  },
+  {
+    "Name": "Fruit Salad",
+    "Meal_Type": "Breakfast",
+    "Carbs": "25g",
+    "Calories": "120",
+    "Ingredients": {
+      "Apple": "1",
+      "Banana": "1",
+      "Berries": "50g",
+      "Orange": "1",
+      "Honey": "10ml"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Chop all the fruits and mix in a bowl. Drizzle with honey."
+  },
+  {
+    "Name": "Breakfast Sandwich",
+    "Meal_Type": "Breakfast",
+    "Carbs": "30g",
+    "Calories": "350",
+    "Ingredients": {
+      "Bread": "2 slices",
+      "Egg": "1",
+      "Cheese": "50g",
+      "Ham": "50g",
+      "Butter": "10g"
+    },
+    "Serving Size": "1 Sandwich",
+    "Recipe": "Fry the egg and assemble the sandwich with bread, cheese, ham, and egg. Grill until golden brown."
+  },
+  {
+    "Name": "Chia Pudding",
+    "Meal_Type": "Breakfast",
+    "Carbs": "15g",
+    "Calories": "200",
+    "Ingredients": {
+      "Chia Seeds": "30g",
+      "Milk": "200ml",
+      "Honey": "10ml",
+      "Berries": "50g"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Mix chia seeds and milk. Let it sit overnight in the fridge. Top with honey and berries before serving."
+  },
+  {
+    "Name": "Granola Bars",
+    "Meal_Type": "Breakfast",
+    "Carbs": "30g",
+    "Calories": "180",
+    "Ingredients": {
+      "Oats": "100g",
+      "Honey": "50ml",
+      "Nuts": "30g",
+      "Dried Fruits": "30g",
+      "Butter": "20g"
+    },
+    "Serving Size": "2 Bars",
+    "Recipe": "Mix all ingredients and press into a baking dish. Bake at 180°C for 20 minutes. Cut into bars once cooled."
+  },
+  {
+    "Name": "French Toast",
+    "Meal_Type": "Breakfast",
+    "Carbs": "40g",
+    "Calories": "300",
+    "Ingredients": {
+      "Bread": "2 slices",
+      "Egg": "1",
+      "Milk": "50ml",
+      "Cinnamon": "1g",
+      "Sugar": "10g",
+      "Butter": "10g"
+    },
+    "Serving Size": "2 Slices",
+    "Recipe": "Whisk egg, milk, cinnamon, and sugar. Dip bread slices in the mixture and fry in butter until golden brown."
+  },
+  {
+    "Name": "Bagel with Cream Cheese",
+    "Meal_Type": "Breakfast",
+    "Carbs": "50g",
+    "Calories": "300",
+    "Ingredients": {
+      "Bagel": "1",
+      "Cream Cheese": "50g"
+    },
+    "Serving Size": "1 Bagel",
+    "Recipe": "Slice the bagel and spread cream cheese on both halves."
+  },
+  {
+    "Name": "Muesli",
+    "Meal_Type": "Breakfast",
+    "Carbs": "40g",
+    "Calories": "250",
+    "Ingredients": {
+      "Oats": "100g",
+      "Milk": "200ml",
+      "Dried Fruits": "30g",
+      "Nuts": "30g",
+      "Honey": "10ml"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Mix oats, dried fruits, and nuts. Serve with milk and a drizzle of honey."
+  },
+  {
+    "Name": "Scrambled Eggs with Spinach",
+    "Meal_Type": "Breakfast",
+    "Carbs": "5g",
+    "Calories": "200",
+    "Ingredients": {
+      "Eggs": "3",
+      "Spinach": "50g",
+      "Milk": "30ml",
+      "Butter": "10g",
+      "Salt": "1g",
+      "Pepper": "1g"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Beat eggs with milk, salt, and pepper. Sauté spinach in butter until wilted. Add eggs and cook until scrambled."
+  },
+  {
+    "Name": "Breakfast Parfait",
+    "Meal_Type": "Breakfast",
+    "Carbs": "30g",
+    "Calories": "200",
+    "Ingredients": {
+      "Greek Yogurt": "200ml",
+      "Granola": "50g",
+      "Berries": "50g",
+      "Honey": "10ml"
+    },
+    "Serving Size": "1 Parfait",
+    "Recipe": "Layer Greek yogurt, granola, and berries in a glass. Drizzle with honey."
+  },
+  {
+    "Name": "Apple Cinnamon Oatmeal",
+    "Meal_Type": "Breakfast",
+    "Carbs": "45g",
+    "Calories": "250",
+    "Ingredients": {
+      "Oats": "100g",
+      "Milk": "200ml",
+      "Apple": "1",
+      "Cinnamon": "1g",
+      "Honey": "10ml"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Cook oats with milk. Stir in chopped apple, cinnamon, and honey."
+  },
+  {
+    "Name": "Breakfast Quesadilla",
+    "Meal_Type": "Breakfast",
+    "Carbs": "35g",
+    "Calories": "350",
+    "Ingredients": {
+      "Tortilla": "1",
+      "Eggs": "2",
+      "Cheese": "50g",
+      "Salsa": "30ml",
+      "Butter": "10g"
+    },
+    "Serving Size": "1 Quesadilla",
+    "Recipe": "Scramble eggs and place on one half of the tortilla. Add cheese and salsa, fold the tortilla, and cook in butter until golden brown."
+  },
+  {
+    "Name": "Banana Bread",
+    "Meal_Type": "Breakfast",
+    "Carbs": "50g",
+    "Calories": "300",
+    "Ingredients": {
+      "Bananas": "3",
+      "Flour": "200g",
+      "Sugar": "100g",
+      "Eggs": "2",
+      "Butter": "100g",
+      "Baking Powder": "10g"
+    },
+    "Serving Size": "1 Slice",
+    "Recipe": "Mash bananas and mix with eggs, melted butter, sugar, and flour. Pour into a loaf pan and bake at 180°C for 60 minutes."
+  },
+  {
+    "Name": "Breakfast Tacos",
+    "Meal_Type": "Breakfast",
+    "Carbs": "25g",
+    "Calories": "300",
+    "Ingredients": {
+      "Tortillas": "2",
+      "Scrambled Eggs": "2",
+      "Cheese": "50g",
+      "Salsa": "30ml",
+      "Avocado": "50g"
+    },
+    "Serving Size": "2 Tacos",
+    "Recipe": "Place scrambled eggs, cheese, salsa, and avocado in tortillas. Serve warm."
+  },
+  {
+    "Name": "Berry Smoothie",
+    "Meal_Type": "Breakfast",
+    "Carbs": "30g",
+    "Calories": "150",
+    "Ingredients": {
+      "Berries": "150g",
+      "Banana": "1",
+      "Yogurt": "200ml",
+      "Honey": "10ml"
+    },
+    "Serving Size": "1 Glass",
+    "Recipe": "Blend berries, banana, yogurt, and honey until smooth. Serve chilled."
+  },
+  {
+    "Name": "Peanut Butter Toast",
+    "Meal_Type": "Breakfast",
+    "Carbs": "25g",
+    "Calories": "200",
+    "Ingredients": {
+      "Bread": "2 slices",
+      "Peanut Butter": "30g"
+    },
+    "Serving Size": "2 Slices",
+    "Recipe": "Toast bread slices and spread peanut butter on both halves."
+  },
+  {
+    "Name": "Mango Smoothie",
+    "Meal_Type": "Breakfast",
+    "Carbs": "35g",
+    "Calories": "200",
+    "Ingredients": {
+      "Mango": "1",
+      "Yogurt": "200ml",
+      "Honey": "10ml",
+      "Milk": "100ml"
+    },
+    "Serving Size": "1 Glass",
+    "Recipe": "Blend mango, yogurt, honey, and milk until smooth. Serve chilled."
+  },
+  {
+    "Name": "Breakfast Burrito Bowl",
+    "Meal_Type": "Breakfast",
+    "Carbs": "30g",
+    "Calories": "350",
+    "Ingredients": {
+      "Scrambled Eggs": "2",
+      "Black Beans": "100g",
+      "Cheese": "50g",
+      "Salsa": "30ml",
+      "Avocado": "50g"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Combine scrambled eggs, black beans, cheese, salsa, and avocado in a bowl. Serve warm."
+  },
+  {
+    "Name": "Breakfast Pizza",
+    "Meal_Type": "Breakfast",
+    "Carbs": "45g",
+    "Calories": "400",
+    "Ingredients": {
+      "Pizza Dough": "200g",
+      "Eggs": "2",
+      "Cheese": "100g",
+      "Bacon": "50g",
+      "Tomato Sauce": "50ml"
+    },
+    "Serving Size": "1 Mini Pizza",
+    "Recipe": "Roll out pizza dough and spread with tomato sauce. Top with scrambled eggs, cheese, and bacon. Bake at 200°C for 15 minutes."
+  },
+  {
+    "Name": "Quinoa Breakfast Bowl",
+    "Meal_Type": "Breakfast",
+    "Carbs": "35g",
+    "Calories": "300",
+    "Ingredients": {
+      "Quinoa": "100g",
+      "Milk": "200ml",
+      "Honey": "10ml",
+      "Berries": "50g",
+      "Nuts": "30g"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Cook quinoa with milk. Stir in honey and top with berries and nuts."
+  },
+  {
+    "Name": "Breakfast Frittata",
+    "Meal_Type": "Breakfast",
+    "Carbs": "5g",
+    "Calories": "250",
+    "Ingredients": {
+      "Eggs": "4",
+      "Spinach": "50g",
+      "Tomatoes": "50g",
+      "Cheese": "50g",
+      "Milk": "50ml",
+      "Salt": "1g",
+      "Pepper": "1g"
+    },
+    "Serving Size": "1 Frittata",
+    "Recipe": "Beat eggs with milk, salt, and pepper. Stir in spinach, tomatoes, and cheese. Pour into a greased baking dish and bake at 180°C for 20 minutes."
+  },
+  {
+    "Name": "Breakfast Wrap",
+    "Meal_Type": "Breakfast",
+    "Carbs": "30g",
+    "Calories": "300",
+    "Ingredients": {
+      "Tortilla": "1",
+      "Scrambled Eggs": "2",
+      "Cheese": "50g",
+      "Salsa": "30ml",
+      "Avocado": "50g"
+    },
+    "Serving Size": "1 Wrap",
+    "Recipe": "Place scrambled eggs, cheese, salsa, and avocado in the center of the tortilla. Roll up the tortilla and serve warm."
+  },
+  {
+    "Name": "Pumpkin Spice Oatmeal",
+    "Meal_Type": "Breakfast",
+    "Carbs": "40g",
+    "Calories": "250",
+    "Ingredients": {
+      "Oats": "100g",
+      "Milk": "200ml",
+      "Pumpkin Puree": "50g",
+      "Cinnamon": "1g",
+      "Honey": "10ml"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Cook oats with milk and pumpkin puree. Stir in cinnamon and honey before serving."
+  },
+  {
+    "Name": "Breakfast Skillet",
+    "Meal_Type": "Breakfast",
+    "Carbs": "25g",
+    "Calories": "400",
+    "Ingredients": {
+      "Potatoes": "200g",
+      "Sausage": "100g",
+      "Eggs": "2",
+      "Cheese": "50g",
+      "Onions": "50g",
+      "Peppers": "50g"
+    },
+    "Serving Size": "1 Skillet",
+    "Recipe": "Cook diced potatoes, sausage, onions, and peppers in a skillet until golden brown. Add scrambled eggs and cheese, cook until eggs are set."
+  },
+  {
+    "Name": "Breakfast Muffins",
+    "Meal_Type": "Breakfast",
+    "Carbs": "25g",
+    "Calories": "200",
+    "Ingredients": {
+      "Flour": "100g",
+      "Sugar": "50g",
+      "Eggs": "2",
+      "Milk": "100ml",
+      "Butter": "50g",
+      "Baking Powder": "10g",
+      "Berries": "50g"
+    },
+    "Serving Size": "2 Muffins",
+    "Recipe": "Mix flour, sugar, baking powder, and berries. In another bowl, whisk eggs, milk, and melted butter. Combine both mixtures and pour into muffin tins. Bake at 180°C for 20 minutes."
+  },
+  {
+    "Name": "Breakfast Burrito",
+    "Meal_Type": "Breakfast",
+    "Carbs": "35g",
+    "Calories": "300",
+    "Ingredients": {
+      "Tortilla": "1",
+      "Scrambled Eggs": "2",
+      "Cheese": "50g",
+      "Salsa": "30ml",
+      "Avocado": "50g"
+    },
+    "Serving Size": "1 Burrito",
+    "Recipe": "Place scrambled eggs, cheese, salsa, and avocado in the center of the tortilla. Roll up the tortilla and serve warm."
+  },
+  {
+    "Name": "Breakfast Burrito",
+    "Meal_Type": "Breakfast",
+    "Carbs": "35g",
+    "Calories": "300",
+    "Ingredients": {
+      "Tortilla": "1",
+      "Scrambled Eggs": "2",
+      "Cheese": "50g",
+      "Salsa": "30ml",
+      "Avocado": "50g"
+    },
+    "Serving Size": "1 Burrito",
+    "Recipe": "Place scrambled eggs, cheese, salsa, and avocado in the center of the tortilla. Roll up the tortilla and serve warm."
+  },
+  {
+    "Name": "Chicken Caesar Salad",
+    "Meal_Type": "Lunch",
+    "Carbs": "15g",
+    "Calories": "350",
+    "Ingredients": {
+      "Chicken Breast": "200g",
+      "Romaine Lettuce": "100g",
+      "Caesar Dressing": "50ml",
+      "Parmesan Cheese": "30g",
+      "Croutons": "40g"
+    },
+    "Serving Size": "1 Salad",
+    "Recipe": "Grill chicken breast and slice. Toss romaine lettuce with Caesar dressing. Top with grilled chicken, Parmesan cheese, and croutons."
+  },
+  {
+    "Name": "Turkey Sandwich",
+    "Meal_Type": "Lunch",
+    "Carbs": "40g",
+    "Calories": "300",
+    "Ingredients": {
+      "Whole Grain Bread": "2 slices",
+      "Turkey Breast": "100g",
+      "Lettuce": "30g",
+      "Tomato": "1",
+      "Mustard": "10g"
+    },
+    "Serving Size": "1 Sandwich",
+    "Recipe": "Layer turkey, lettuce, and tomato between the bread slices. Spread mustard on one slice before assembling."
+  },
+  {
+    "Name": "Veggie Wrap",
+    "Meal_Type": "Lunch",
+    "Carbs": "35g",
+    "Calories": "250",
+    "Ingredients": {
+      "Tortilla": "1",
+      "Hummus": "50g",
+      "Carrot": "50g",
+      "Cucumber": "50g",
+      "Bell Pepper": "50g",
+      "Lettuce": "30g"
+    },
+    "Serving Size": "1 Wrap",
+    "Recipe": "Spread hummus on the tortilla. Layer with sliced vegetables and lettuce. Roll up the tortilla and serve."
+  },
+  {
+    "Name": "Grilled Chicken Sandwich",
+    "Meal_Type": "Lunch",
+    "Carbs": "40g",
+    "Calories": "350",
+    "Ingredients": {
+      "Whole Grain Bread": "2 slices",
+      "Grilled Chicken": "150g",
+      "Lettuce": "30g",
+      "Tomato": "1",
+      "Mayonnaise": "10g"
+    },
+    "Serving Size": "1 Sandwich",
+    "Recipe": "Layer grilled chicken, lettuce, and tomato between the bread slices. Spread mayonnaise on one slice before assembling."
+  },
+  {
+    "Name": "Pasta Salad",
+    "Meal_Type": "Lunch",
+    "Carbs": "45g",
+    "Calories": "300",
+    "Ingredients": {
+      "Pasta": "150g",
+      "Cherry Tomatoes": "100g",
+      "Cucumber": "100g",
+      "Feta Cheese": "50g",
+      "Olive Oil": "20ml",
+      "Lemon Juice": "10ml"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Cook pasta according to package instructions. Mix with chopped tomatoes, cucumber, feta cheese, olive oil, and lemon juice."
+  },
+  {
+    "Name": "Quinoa Salad",
+    "Meal_Type": "Lunch",
+    "Carbs": "35g",
+    "Calories": "250",
+    "Ingredients": {
+      "Quinoa": "150g",
+      "Bell Pepper": "100g",
+      "Cucumber": "100g",
+      "Feta Cheese": "50g",
+      "Olive Oil": "20ml",
+      "Lemon Juice": "10ml"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Cook quinoa according to package instructions. Mix with chopped bell pepper, cucumber, feta cheese, olive oil, and lemon juice."
+  },
+  {
+    "Name": "Chicken Stir Fry",
+    "Meal_Type": "Lunch",
+    "Carbs": "20g",
+    "Calories": "400",
+    "Ingredients": {
+      "Chicken Breast": "200g",
+      "Bell Peppers": "100g",
+      "Soy Sauce": "30ml",
+      "Garlic": "10g",
+      "Olive Oil": "20ml",
+      "Onions": "50g"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Slice chicken and bell peppers. Sauté garlic and onions in olive oil. Add chicken and cook until done. Stir in bell peppers and soy sauce, cook for another 5 minutes."
+  },
+  {
+    "Name": "Tuna Salad",
+    "Meal_Type": "Lunch",
+    "Carbs": "10g",
+    "Calories": "200",
+    "Ingredients": {
+      "Tuna": "150g",
+      "Lettuce": "100g",
+      "Cherry Tomatoes": "50g",
+      "Cucumber": "50g",
+      "Olive Oil": "20ml",
+      "Lemon Juice": "10ml"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Mix tuna with chopped lettuce, cherry tomatoes, and cucumber. Drizzle with olive oil and lemon juice."
+  },
+  {
+    "Name": "Beef Tacos",
+    "Meal_Type": "Lunch",
+    "Carbs": "30g",
+    "Calories": "350",
+    "Ingredients": {
+      "Ground Beef": "200g",
+      "Taco Shells": "3",
+      "Lettuce": "30g",
+      "Tomato": "1",
+      "Cheese": "50g",
+      "Salsa": "30ml"
+    },
+    "Serving Size": "3 Tacos",
+    "Recipe": "Cook ground beef until browned. Assemble tacos with beef, lettuce, tomato, cheese, and salsa."
+  },
+  {
+    "Name": "Lentil Soup",
+    "Meal_Type": "Lunch",
+    "Carbs": "30g",
+    "Calories": "250",
+    "Ingredients": {
+      "Lentils": "200g",
+      "Carrot": "50g",
+      "Celery": "50g",
+      "Onion": "50g",
+      "Garlic": "10g",
+      "Olive Oil": "20ml",
+      "Vegetable Broth": "500ml"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Sauté chopped carrot, celery, onion, and garlic in olive oil. Add lentils and vegetable broth. Simmer until lentils are tender."
+  },
+  {
+    "Name": "Caprese Salad",
+    "Meal_Type": "Lunch",
+    "Carbs": "10g",
+    "Calories": "200",
+    "Ingredients": {
+      "Tomatoes": "150g",
+      "Mozzarella Cheese": "100g",
+      "Basil": "10g",
+      "Olive Oil": "20ml",
+      "Balsamic Vinegar": "10ml"
+    },
+    "Serving Size": "1 Salad",
+    "Recipe": "Slice tomatoes and mozzarella. Arrange on a plate, alternating between the two. Top with fresh basil, drizzle with olive oil and balsamic vinegar."
+  },
+  {
+    "Name": "BBQ Chicken Sandwich",
+    "Meal_Type": "Lunch",
+    "Carbs": "40g",
+    "Calories": "350",
+    "Ingredients": {
+      "Whole Grain Bread": "2 slices",
+      "BBQ Chicken": "150g",
+      "Lettuce": "30g",
+      "Tomato": "1"
+    },
+    "Serving Size": "1 Sandwich",
+    "Recipe": "Layer BBQ chicken, lettuce, and tomato between the bread slices."
+  },
+  {
+    "Name": "Falafel Wrap",
+    "Meal_Type": "Lunch",
+    "Carbs": "45g",
+    "Calories": "300",
+    "Ingredients": {
+      "Tortilla": "1",
+      "Falafel": "4 pieces",
+      "Lettuce": "30g",
+      "Tomato": "1",
+      "Tahini Sauce": "20ml"
+    },
+    "Serving Size": "1 Wrap",
+    "Recipe": "Place falafel, lettuce, and tomato in the center of the tortilla. Drizzle with tahini sauce and roll up the tortilla."
+  },
+  {
+    "Name": "Chicken Noodle Soup",
+    "Meal_Type": "Lunch",
+    "Carbs": "30g",
+    "Calories": "250",
+    "Ingredients": {
+      "Chicken Breast": "150g",
+      "Noodles": "100g",
+      "Carrot": "50g",
+      "Celery": "50g",
+      "Onion": "50g",
+      "Garlic": "10g",
+      "Chicken Broth": "500ml"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Sauté chopped carrot, celery, onion, and garlic in olive oil. Add chicken broth and bring to a boil. Add noodles and chicken, cook until noodles are tender and chicken is cooked through."
+  },
+  {
+    "Name": "Veggie Burger",
+    "Meal_Type": "Lunch",
+    "Carbs": "40g",
+    "Calories": "350",
+    "Ingredients": {
+      "Whole Grain Bun": "1",
+      "Veggie Patty": "1",
+      "Lettuce": "30g",
+      "Tomato": "1",
+      "Onion": "20g",
+      "Pickles": "20g",
+      "Ketchup": "10ml",
+      "Mustard": "10ml"
+    },
+    "Serving Size": "1 Burger",
+    "Recipe": "Grill veggie patty and place on bun. Top with lettuce, tomato, onion, pickles, ketchup, and mustard."
+  },
+  {
+    "Name": "Chicken Quesadilla",
+    "Meal_Type": "Lunch",
+    "Carbs": "35g",
+    "Calories": "300",
+    "Ingredients": {
+      "Tortilla": "1",
+      "Grilled Chicken": "150g",
+      "Cheese": "50g",
+      "Salsa": "30ml",
+      "Sour Cream": "20ml"
+    },
+    "Serving Size": "1 Quesadilla",
+    "Recipe": "Place grilled chicken and cheese on one half of the tortilla. Fold the tortilla and cook in a pan until golden brown. Serve with salsa and sour cream."
+  },
+  {
+    "Name": "Greek Salad",
+    "Meal_Type": "Lunch",
+    "Carbs": "20g",
+    "Calories": "200",
+    "Ingredients": {
+      "Tomatoes": "100g",
+      "Cucumber": "100g",
+      "Olives": "50g",
+      "Feta Cheese": "50g",
+      "Olive Oil": "20ml",
+      "Red Onion": "30g"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Mix chopped tomatoes, cucumber, olives, feta cheese, and red onion. Drizzle with olive oil."
+  },
+  {
+    "Name": "Chicken Pesto Pasta",
+    "Meal_Type": "Lunch",
+    "Carbs": "45g",
+    "Calories": "350",
+    "Ingredients": {
+      "Pasta": "150g",
+      "Grilled Chicken": "150g",
+      "Pesto Sauce": "50ml",
+      "Parmesan Cheese": "30g"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Cook pasta according to package instructions. Toss with grilled chicken and pesto sauce. Top with Parmesan cheese."
+  },
+  {
+    "Name": "Shrimp Tacos",
+    "Meal_Type": "Lunch",
+    "Carbs": "30g",
+    "Calories": "300",
+    "Ingredients": {
+      "Shrimp": "150g",
+      "Taco Shells": "3",
+      "Lettuce": "30g",
+      "Tomato": "1",
+      "Cheese": "50g",
+      "Salsa": "30ml"
+    },
+    "Serving Size": "3 Tacos",
+    "Recipe": "Cook shrimp until done. Assemble tacos with shrimp, lettuce, tomato, cheese, and salsa."
+  },
+  {
+    "Name": "Egg Salad Sandwich",
+    "Meal_Type": "Lunch",
+    "Carbs": "40g",
+    "Calories": "300",
+    "Ingredients": {
+      "Whole Grain Bread": "2 slices",
+      "Eggs": "3",
+      "Mayonnaise": "30ml",
+      "Mustard": "10ml",
+      "Lettuce": "30g"
+    },
+    "Serving Size": "1 Sandwich",
+    "Recipe": "Chop boiled eggs and mix with mayonnaise and mustard. Spread on bread slices and top with lettuce."
+  },
+  {
+    "Name": "Salmon Salad",
+    "Meal_Type": "Lunch",
+    "Carbs": "10g",
+    "Calories": "350",
+    "Ingredients": {
+      "Salmon": "150g",
+      "Lettuce": "100g",
+      "Cherry Tomatoes": "50g",
+      "Cucumber": "50g",
+      "Olive Oil": "20ml",
+      "Lemon Juice": "10ml"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Grill salmon and flake. Mix with lettuce, cherry tomatoes, and cucumber. Drizzle with olive oil and lemon juice."
+  },
+  {
+    "Name": "Roast Beef Sandwich",
+    "Meal_Type": "Lunch",
+    "Carbs": "40g",
+    "Calories": "350",
+    "Ingredients": {
+      "Whole Grain Bread": "2 slices",
+      "Roast Beef": "150g",
+      "Lettuce": "30g",
+      "Tomato": "1",
+      "Horseradish Sauce": "10g"
+    },
+    "Serving Size": "1 Sandwich",
+    "Recipe": "Layer roast beef, lettuce, and tomato between the bread slices. Spread horseradish sauce on one slice before assembling."
+  },
+  {
+    "Name": "Chicken Cobb Salad",
+    "Meal_Type": "Lunch",
+    "Carbs": "20g",
+    "Calories": "400",
+    "Ingredients": {
+      "Chicken Breast": "150g",
+      "Lettuce": "100g",
+      "Avocado": "50g",
+      "Bacon": "50g",
+      "Egg": "1",
+      "Blue Cheese": "30g",
+      "Olive Oil": "20ml"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Grill chicken breast and slice. Toss lettuce with olive oil. Top with chicken, avocado, bacon, boiled egg, and blue cheese."
+  },
+  {
+    "Name": "Vegetable Soup",
+    "Meal_Type": "Lunch",
+    "Carbs": "20g",
+    "Calories": "150",
+    "Ingredients": {
+      "Carrot": "50g",
+      "Celery": "50g",
+      "Onion": "50g",
+      "Tomato": "100g",
+      "Garlic": "10g",
+      "Vegetable Broth": "500ml"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Sauté chopped carrot, celery, onion, and garlic in olive oil. Add chopped tomatoes and vegetable broth. Simmer until vegetables are tender."
+  },
+  {
+    "Name": "Ham and Cheese Sandwich",
+    "Meal_Type": "Lunch",
+    "Carbs": "40g",
+    "Calories": "350",
+    "Ingredients": {
+      "Whole Grain Bread": "2 slices",
+      "Ham": "150g",
+      "Cheese": "50g",
+      "Lettuce": "30g",
+      "Tomato": "1",
+      "Mayonnaise": "10g"
+    },
+    "Serving Size": "1 Sandwich",
+    "Recipe": "Layer ham, cheese, lettuce, and tomato between the bread slices. Spread mayonnaise on one slice before assembling."
+  },
+  {
+    "Name": "Chicken and Rice",
+    "Meal_Type": "Lunch",
+    "Carbs": "45g",
+    "Calories": "400",
+    "Ingredients": {
+      "Chicken Breast": "150g",
+      "Rice": "200g",
+      "Broccoli": "100g",
+      "Soy Sauce": "30ml",
+      "Garlic": "10g",
+      "Olive Oil": "20ml"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Cook rice according to package instructions. Sauté garlic in olive oil, add chicken and cook until done. Stir in broccoli and soy sauce, cook until broccoli is tender. Serve over rice."
+  },
+  {
+    "Name": "Vegetable Stir Fry",
+    "Meal_Type": "Lunch",
+    "Carbs": "30g",
+    "Calories": "250",
+    "Ingredients": {
+      "Bell Peppers": "100g",
+      "Broccoli": "100g",
+      "Carrot": "50g",
+      "Snow Peas": "50g",
+      "Soy Sauce": "30ml",
+      "Garlic": "10g",
+      "Olive Oil": "20ml"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Sauté garlic in olive oil, add chopped vegetables and cook until tender. Stir in soy sauce and cook for another 5 minutes."
+  },
+  {
+    "Name": "BLT Sandwich",
+    "Meal_Type": "Lunch",
+    "Carbs": "40g",
+    "Calories": "350",
+    "Ingredients": {
+      "Whole Grain Bread": "2 slices",
+      "Bacon": "4 slices",
+      "Lettuce": "30g",
+      "Tomato": "1",
+      "Mayonnaise": "10g"
+    },
+    "Serving Size": "1 Sandwich",
+    "Recipe": "Cook bacon until crispy. Layer bacon, lettuce, and tomato between the bread slices. Spread mayonnaise on one slice before assembling."
+  },
+  {
+    "Name": "Spinach and Feta Wrap",
+    "Meal_Type": "Lunch",
+    "Carbs": "35g",
+    "Calories": "250",
+    "Ingredients": {
+      "Tortilla": "1",
+      "Spinach": "100g",
+      "Feta Cheese": "50g",
+      "Olive Oil": "20ml"
+    },
+    "Serving Size": "1 Wrap",
+    "Recipe": "Sauté spinach in olive oil until wilted. Place spinach and feta cheese in the center of the tortilla. Roll up the tortilla and serve."
+  },
+  {
+    "Name": "Turkey and Avocado Salad",
+    "Meal_Type": "Lunch",
+    "Carbs": "10g",
+    "Calories": "300",
+    "Ingredients": {
+      "Turkey Breast": "150g",
+      "Avocado": "50g",
+      "Lettuce": "100g",
+      "Cherry Tomatoes": "50g",
+      "Olive Oil": "20ml",
+      "Lemon Juice": "10ml"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Mix sliced turkey with lettuce, avocado, and cherry tomatoes. Drizzle with olive oil and lemon juice."
+  },
+  {
+    "Name": "Eggplant Parmesan",
+    "Meal_Type": "Lunch",
+    "Carbs": "35g",
+    "Calories": "300",
+    "Ingredients": {
+      "Eggplant": "200g",
+      "Tomato Sauce": "100ml",
+      "Mozzarella Cheese": "50g",
+      "Parmesan Cheese": "30g",
+      "Olive Oil": "20ml",
+      "Basil": "10g"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Slice eggplant and bake until tender. Top with tomato sauce, mozzarella, and Parmesan cheese. Bake until cheese is melted. Garnish with basil."
+  },
+  {
+    "Name": "Grilled Salmon",
+    "Meal_Type": "Dinner",
+    "Carbs": "5g",
+    "Calories": "350",
+    "Ingredients": {
+      "Salmon Fillet": "200g",
+      "Olive Oil": "20ml",
+      "Garlic": "10g",
+      "Lemon Juice": "10ml",
+      "Parsley": "5g"
+    },
+    "Serving Size": "1 Fillet",
+    "Recipe": "Brush salmon fillet with olive oil, minced garlic, and lemon juice. Grill until cooked through. Garnish with chopped parsley."
+  },
+  {
+    "Name": "Beef Stir Fry",
+    "Meal_Type": "Dinner",
+    "Carbs": "20g",
+    "Calories": "400",
+    "Ingredients": {
+      "Beef Strips": "200g",
+      "Bell Peppers": "100g",
+      "Broccoli": "100g",
+      "Soy Sauce": "30ml",
+      "Garlic": "10g",
+      "Olive Oil": "20ml"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Sauté beef strips in olive oil until browned. Add chopped bell peppers, broccoli, and garlic. Stir in soy sauce and cook until vegetables are tender."
+  },
+  {
+    "Name": "Chicken Alfredo",
+    "Meal_Type": "Dinner",
+    "Carbs": "45g",
+    "Calories": "500",
+    "Ingredients": {
+      "Pasta": "150g",
+      "Chicken Breast": "150g",
+      "Alfredo Sauce": "100ml",
+      "Parmesan Cheese": "30g",
+      "Garlic": "10g",
+      "Olive Oil": "20ml"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Cook pasta according to package instructions. Sauté chicken and garlic in olive oil until cooked. Toss with pasta and Alfredo sauce. Top with Parmesan cheese."
+  },
+  {
+    "Name": "Vegetable Curry",
+    "Meal_Type": "Dinner",
+    "Carbs": "40g",
+    "Calories": "300",
+    "Ingredients": {
+      "Potato": "100g",
+      "Carrot": "100g",
+      "Peas": "100g",
+      "Coconut Milk": "200ml",
+      "Curry Powder": "10g",
+      "Onion": "50g"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Sauté chopped onion in oil until soft. Add diced potatoes, carrots, and peas. Stir in curry powder and coconut milk. Simmer until vegetables are tender."
+  },
+  {
+    "Name": "Beef Tacos",
+    "Meal_Type": "Dinner",
+    "Carbs": "35g",
+    "Calories": "400",
+    "Ingredients": {
+      "Ground Beef": "200g",
+      "Taco Shells": "3",
+      "Lettuce": "30g",
+      "Tomato": "1",
+      "Cheese": "50g",
+      "Salsa": "30ml"
+    },
+    "Serving Size": "3 Tacos",
+    "Recipe": "Cook ground beef until browned. Assemble tacos with beef, lettuce, tomato, cheese, and salsa."
+  },
+  {
+    "Name": "Spaghetti Bolognese",
+    "Meal_Type": "Dinner",
+    "Carbs": "50g",
+    "Calories": "450",
+    "Ingredients": {
+      "Spaghetti": "150g",
+      "Ground Beef": "200g",
+      "Tomato Sauce": "200ml",
+      "Onion": "50g",
+      "Garlic": "10g",
+      "Parmesan Cheese": "30g"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Cook spaghetti according to package instructions. Sauté ground beef, onion, and garlic until browned. Stir in tomato sauce and simmer. Serve over spaghetti and top with Parmesan cheese."
+  },
+  {
+    "Name": "Chicken Fajitas",
+    "Meal_Type": "Dinner",
+    "Carbs": "30g",
+    "Calories": "400",
+    "Ingredients": {
+      "Chicken Breast": "200g",
+      "Bell Peppers": "100g",
+      "Onion": "50g",
+      "Tortillas": "3",
+      "Fajita Seasoning": "10g",
+      "Olive Oil": "20ml"
+    },
+    "Serving Size": "3 Fajitas",
+    "Recipe": "Slice chicken, bell peppers, and onion. Sauté in olive oil with fajita seasoning until cooked through. Serve in tortillas."
+  },
+  {
+    "Name": "Shrimp Scampi",
+    "Meal_Type": "Dinner",
+    "Carbs": "35g",
+    "Calories": "400",
+    "Ingredients": {
+      "Shrimp": "200g",
+      "Spaghetti": "150g",
+      "Garlic": "10g",
+      "Olive Oil": "20ml",
+      "Lemon Juice": "10ml",
+      "Parsley": "5g"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Cook spaghetti according to package instructions. Sauté shrimp and garlic in olive oil until shrimp is pink. Toss with spaghetti, lemon juice, and chopped parsley."
+  },
+  {
+    "Name": "Beef Stew",
+    "Meal_Type": "Dinner",
+    "Carbs": "30g",
+    "Calories": "350",
+    "Ingredients": {
+      "Beef Chunks": "200g",
+      "Potatoes": "100g",
+      "Carrots": "100g",
+      "Onion": "50g",
+      "Beef Broth": "500ml",
+      "Garlic": "10g"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Sauté beef chunks until browned. Add chopped potatoes, carrots, onion, and garlic. Pour in beef broth and simmer until vegetables are tender."
+  },
+  {
+    "Name": "Vegetable Lasagna",
+    "Meal_Type": "Dinner",
+    "Carbs": "40g",
+    "Calories": "350",
+    "Ingredients": {
+      "Lasagna Noodles": "150g",
+      "Tomato Sauce": "200ml",
+      "Spinach": "100g",
+      "Ricotta Cheese": "100g",
+      "Mozzarella Cheese": "50g",
+      "Parmesan Cheese": "30g"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Layer lasagna noodles, tomato sauce, spinach, ricotta, and mozzarella in a baking dish. Repeat layers. Top with Parmesan cheese. Bake until bubbly and golden."
+  },
+  {
+    "Name": "Chicken Parmesan",
+    "Meal_Type": "Dinner",
+    "Carbs": "30g",
+    "Calories": "450",
+    "Ingredients": {
+      "Chicken Breast": "200g",
+      "Breadcrumbs": "50g",
+      "Tomato Sauce": "100ml",
+      "Mozzarella Cheese": "50g",
+      "Parmesan Cheese": "30g",
+      "Olive Oil": "20ml"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Bread chicken breast with breadcrumbs and fry in olive oil until golden. Top with tomato sauce and mozzarella. Bake until cheese is melted. Sprinkle with Parmesan."
+  },
+  {
+    "Name": "Lamb Chops",
+    "Meal_Type": "Dinner",
+    "Carbs": "10g",
+    "Calories": "500",
+    "Ingredients": {
+      "Lamb Chops": "200g",
+      "Olive Oil": "20ml",
+      "Garlic": "10g",
+      "Rosemary": "5g",
+      "Potatoes": "150g",
+      "Green Beans": "100g"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Marinate lamb chops in olive oil, garlic, and rosemary. Grill until desired doneness. Serve with roasted potatoes and green beans."
+  },
+  {
+    "Name": "Chicken Tikka Masala",
+    "Meal_Type": "Dinner",
+    "Carbs": "35g",
+    "Calories": "450",
+    "Ingredients": {
+      "Chicken Breast": "200g",
+      "Tikka Masala Sauce": "200ml",
+      "Rice": "150g",
+      "Yogurt": "50g",
+      "Cilantro": "5g"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Cook chicken in tikka masala sauce until done. Serve over cooked rice. Garnish with yogurt and chopped cilantro."
+  },
+  {
+    "Name": "Vegetable Stir Fry",
+    "Meal_Type": "Dinner",
+    "Carbs": "30g",
+    "Calories": "250",
+    "Ingredients": {
+      "Bell Peppers": "100g",
+      "Broccoli": "100g",
+      "Carrot": "50g",
+      "Snow Peas": "50g",
+      "Soy Sauce": "30ml",
+      "Garlic": "10g",
+      "Olive Oil": "20ml"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Sauté garlic in olive oil, add chopped vegetables and cook until tender. Stir in soy sauce and cook for another 5 minutes."
+  },
+  {
+    "Name": "Pork Chops",
+    "Meal_Type": "Dinner",
+    "Carbs": "15g",
+    "Calories": "450",
+    "Ingredients": {
+      "Pork Chops": "200g",
+      "Apples": "100g",
+      "Onion": "50g",
+      "Olive Oil": "20ml",
+      "Thyme": "5g",
+      "Potatoes": "150g"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Sear pork chops in olive oil until browned. Remove from pan and add sliced apples and onion. Cook until soft. Return pork chops to pan and sprinkle with thyme. Serve with mashed potatoes."
+  },
+  {
+    "Name": "Quinoa Salad",
+    "Meal_Type": "Dinner",
+    "Carbs": "35g",
+    "Calories": "300",
+    "Ingredients": {
+      "Quinoa": "150g",
+      "Cucumber": "50g",
+      "Cherry Tomatoes": "50g",
+      "Feta Cheese": "50g",
+      "Olive Oil": "20ml",
+      "Lemon Juice": "10ml"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Cook quinoa according to package instructions. Mix with chopped cucumber, cherry tomatoes, and feta cheese. Drizzle with olive oil and lemon juice."
+  },
+  {
+    "Name": "Seafood Paella",
+    "Meal_Type": "Dinner",
+    "Carbs": "45g",
+    "Calories": "500",
+    "Ingredients": {
+      "Rice": "150g",
+      "Shrimp": "100g",
+      "Mussels": "100g",
+      "Peas": "50g",
+      "Bell Peppers": "50g",
+      "Saffron": "5g",
+      "Olive Oil": "20ml"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Sauté bell peppers in olive oil. Add rice and saffron, stir until rice is coated. Add broth and bring to a simmer. Add shrimp, mussels, and peas. Cook until seafood is done and rice is tender."
+  },
+  {
+    "Name": "Stuffed Peppers",
+    "Meal_Type": "Dinner",
+    "Carbs": "30g",
+    "Calories": "350",
+    "Ingredients": {
+      "Bell Peppers": "3",
+      "Ground Beef": "200g",
+      "Rice": "100g",
+      "Tomato Sauce": "100ml",
+      "Cheese": "50g",
+      "Onion": "50g"
+    },
+    "Serving Size": "3 Peppers",
+    "Recipe": "Cut tops off bell peppers and remove seeds. Sauté ground beef and onion until browned. Mix with cooked rice and tomato sauce. Stuff mixture into bell peppers. Top with cheese and bake until peppers are tender."
+  },
+  {
+    "Name": "Chicken Caesar Salad",
+    "Meal_Type": "Dinner",
+    "Carbs": "15g",
+    "Calories": "350",
+    "Ingredients": {
+      "Chicken Breast": "150g",
+      "Romaine Lettuce": "100g",
+      "Caesar Dressing": "30ml",
+      "Parmesan Cheese": "30g",
+      "Croutons": "50g"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Grill chicken breast and slice. Toss lettuce with Caesar dressing. Top with chicken, Parmesan cheese, and croutons."
+  },
+  {
+    "Name": "Vegetarian Chili",
+    "Meal_Type": "Dinner",
+    "Carbs": "35g",
+    "Calories": "300",
+    "Ingredients": {
+      "Kidney Beans": "100g",
+      "Tomatoes": "200g",
+      "Onion": "50g",
+      "Bell Peppers": "100g",
+      "Chili Powder": "10g",
+      "Garlic": "10g"
+    },
+    "Serving Size": "1 Bowl",
+    "Recipe": "Sauté onion, bell peppers, and garlic in oil until soft. Add kidney beans, chopped tomatoes, and chili powder. Simmer until thickened."
+  },
+  {
+    "Name": "BBQ Ribs",
+    "Meal_Type": "Dinner",
+    "Carbs": "25g",
+    "Calories": "600",
+    "Ingredients": {
+      "Pork Ribs": "500g",
+      "BBQ Sauce": "100ml",
+      "Garlic": "10g",
+      "Onion": "50g",
+      "Brown Sugar": "20g"
+    },
+    "Serving Size": "1 Rack",
+    "Recipe": "Marinate pork ribs in BBQ sauce, minced garlic, chopped onion, and brown sugar. Bake in the oven or grill until tender."
+  },
+  {
+    "Name": "Fish and Chips",
+    "Meal_Type": "Dinner",
+    "Carbs": "60g",
+    "Calories": "500",
+    "Ingredients": {
+      "White Fish Fillets": "200g",
+      "Potatoes": "200g",
+      "Flour": "50g",
+      "Beer": "100ml",
+      "Oil": "500ml",
+      "Tartar Sauce": "30ml"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Coat fish fillets in a batter made from flour and beer. Fry until golden. Serve with fries made from sliced potatoes. Accompany with tartar sauce."
+  },
+  {
+    "Name": "Mushroom Risotto",
+    "Meal_Type": "Dinner",
+    "Carbs": "40g",
+    "Calories": "350",
+    "Ingredients": {
+      "Arborio Rice": "150g",
+      "Mushrooms": "100g",
+      "Onion": "50g",
+      "Parmesan Cheese": "30g",
+      "Vegetable Broth": "500ml",
+      "Olive Oil": "20ml"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Sauté chopped onion and mushrooms in olive oil until soft. Add Arborio rice and cook for 1 minute. Gradually add vegetable broth, stirring constantly, until rice is creamy and tender. Top with Parmesan cheese."
+  },
+  {
+    "Name": "Beef Stroganoff",
+    "Meal_Type": "Dinner",
+    "Carbs": "30g",
+    "Calories": "400",
+    "Ingredients": {
+      "Beef Strips": "200g",
+      "Mushrooms": "100g",
+      "Onion": "50g",
+      "Sour Cream": "50ml",
+      "Beef Broth": "200ml",
+      "Butter": "20g"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Sauté beef strips in butter until browned. Remove from pan and add chopped mushrooms and onion. Cook until soft. Stir in beef broth and simmer. Return beef to pan and stir in sour cream. Serve over noodles or rice."
+  },
+  {
+    "Name": "Chicken Fried Rice",
+    "Meal_Type": "Dinner",
+    "Carbs": "45g",
+    "Calories": "400",
+    "Ingredients": {
+      "Rice": "150g",
+      "Chicken Breast": "150g",
+      "Peas": "50g",
+      "Carrot": "50g",
+      "Soy Sauce": "30ml",
+      "Egg": "1",
+      "Garlic": "10g"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Cook rice according to package instructions. Sauté chopped chicken, peas, and carrot in oil until cooked. Add cooked rice, soy sauce, and garlic. Stir in beaten egg and cook until set."
+  },
+  {
+    "Name": "Vegetable Casserole",
+    "Meal_Type": "Dinner",
+    "Carbs": "35g",
+    "Calories": "300",
+    "Ingredients": {
+      "Potatoes": "100g",
+      "Carrots": "100g",
+      "Green Beans": "100g",
+      "Cheese": "50g",
+      "Cream": "50ml",
+      "Onion": "50g"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Layer sliced potatoes, carrots, and green beans in a baking dish. Top with chopped onion and cheese. Pour cream over the top. Bake until vegetables are tender and cheese is melted and bubbly."
+  },
+  {
+    "Name": "Turkey Meatloaf",
+    "Meal_Type": "Dinner",
+    "Carbs": "20g",
+    "Calories": "350",
+    "Ingredients": {
+      "Ground Turkey": "200g",
+      "Breadcrumbs": "50g",
+      "Egg": "1",
+      "Onion": "50g",
+      "Tomato Sauce": "50ml",
+      "Garlic": "10g"
+    },
+    "Serving Size": "1 Slice",
+    "Recipe": "Mix ground turkey with breadcrumbs, egg, chopped onion, garlic, and tomato sauce. Shape into a loaf and bake until cooked through."
+  },
+  {
+    "Name": "Vegetarian Pizza",
+    "Meal_Type": "Dinner",
+    "Carbs": "50g",
+    "Calories": "400",
+    "Ingredients": {
+      "Pizza Dough": "200g",
+      "Tomato Sauce": "100ml",
+      "Mozzarella Cheese": "100g",
+      "Bell Peppers": "50g",
+      "Mushrooms": "50g",
+      "Onion": "50g"
+    },
+    "Serving Size": "1 Pizza",
+    "Recipe": "Spread tomato sauce over pizza dough. Top with mozzarella cheese, sliced bell peppers, mushrooms, and onion. Bake until crust is golden and cheese is melted."
+  },
+  {
+    "Name": "Steak and Potatoes",
+    "Meal_Type": "Dinner",
+    "Carbs": "25g",
+    "Calories": "500",
+    "Ingredients": {
+      "Steak": "200g",
+      "Potatoes": "200g",
+      "Butter": "20g",
+      "Garlic": "10g",
+      "Rosemary": "5g"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Season steak with salt and pepper and grill to desired doneness. Serve with roasted potatoes tossed in melted butter, garlic, and rosemary."
+  },
+  {
+    "Name": "Chicken Enchiladas",
+    "Meal_Type": "Dinner",
+    "Carbs": "45g",
+    "Calories": "450",
+    "Ingredients": {
+      "Chicken Breast": "200g",
+      "Tortillas": "4",
+      "Cheese": "100g",
+      "Enchilada Sauce": "200ml",
+      "Onion": "50g",
+      "Olive Oil": "20ml"
+    },
+    "Serving Size": "4 Enchiladas",
+    "Recipe": "Cook and shred chicken breast. Mix with chopped onion and cheese. Roll mixture into tortillas and place in a baking dish. Pour enchilada sauce over the top and bake until bubbly."
+  },
+  {
+    "Name": "Grilled Vegetables",
+    "Meal_Type": "Dinner",
+    "Carbs": "20g",
+    "Calories": "200",
+    "Ingredients": {
+      "Zucchini": "100g",
+      "Bell Peppers": "100g",
+      "Eggplant": "100g",
+      "Olive Oil": "20ml",
+      "Garlic": "10g",
+      "Basil": "5g"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Slice zucchini, bell peppers, and eggplant. Toss with olive oil and minced garlic. Grill until tender. Garnish with chopped basil."
+  },
+  {
+    "Name": "Pasta Primavera",
+    "Meal_Type": "Dinner",
+    "Carbs": "50g",
+    "Calories": "350",
+    "Ingredients": {
+      "Pasta": "150g",
+      "Cherry Tomatoes": "100g",
+      "Broccoli": "100g",
+      "Bell Peppers": "50g",
+      "Olive Oil": "20ml",
+      "Garlic": "10g"
+    },
+    "Serving Size": "1 Plate",
+    "Recipe": "Cook pasta according to package instructions. Sauté cherry tomatoes, broccoli, and bell peppers in olive oil with minced garlic. Toss with cooked pasta."
+  },
+  {
+    "Name": "Shrimp Tacos",
+    "Meal_Type": "Dinner",
+    "Carbs": "30g",
+    "Calories": "350",
+    "Ingredients": {
+      "Shrimp": "200g",
+      "Tortillas": "3",
+      "Cabbage": "50g",
+      "Avocado": "1",
+      "Salsa": "30ml",
+      "Lime": "1"
+    },
+    "Serving Size": "3 Tacos",
+    "Recipe": "Cook shrimp in a skillet until pink. Assemble tacos with shrimp, shredded cabbage, sliced avocado, and salsa. Serve with lime wedges."
+  }
+]

@@ -4,4 +4,9 @@
         <item>Yesterday</item>
         <item>All</item>
     </string-array>
+
+    <string-array name="sugar_type_array">
+        <item>Fasting Blood Sugar (FBS)</item>
+        <item>Postprandial Blood Sugar (PPBS)</item>
+    </string-array>
 </resources>
