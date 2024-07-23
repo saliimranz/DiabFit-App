@@ -1,6 +1,11 @@
 package com.example.diabfitapp.main;
 
+import android.app.AlarmManager;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,16 +20,25 @@ import com.example.diabfitapp.nutrition.food.FoodItem;
 import com.example.diabfitapp.nutrition.food.EatenDatabaseHelper;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private CGCountFragment cgCountFragment;
     private EatenDatabaseHelper dbHelper;
+    private static final int REQUEST_CODE_EXACT_ALARM = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            if (alarmManager != null && !alarmManager.canScheduleExactAlarms()) {
+                requestExactAlarmPermission();
+            }
+        }
 
         dbHelper = new EatenDatabaseHelper(this);
 
@@ -33,6 +47,30 @@ public class MainActivity extends AppCompatActivity {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, mainFragment);
             transaction.commit();
+        }
+    }
+
+    private void requestExactAlarmPermission() {
+        Intent intent = new Intent();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            intent.setAction(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+            startActivityForResult(intent, REQUEST_CODE_EXACT_ALARM);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_EXACT_ALARM) {
+            // Handle the result of the exact alarm permission request if needed
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                if (alarmManager != null && alarmManager.canScheduleExactAlarms()) {
+                    Toast.makeText(this, "Exact alarm permission granted", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Exact alarm permission denied", Toast.LENGTH_SHORT).show();
+                }
+            }
         }
     }
 
@@ -62,19 +100,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Log.d("MainActivity", "CGCountFragment not found");
         }
-    }
-
-    private void saveFoodItemToDatabase(FoodItem item, int servingsEaten) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(EatenDatabaseHelper.COLUMN_NAME, item.getName());
-        values.put(EatenDatabaseHelper.COLUMN_CARBS, item.getCarbsPer100g());
-        values.put(EatenDatabaseHelper.COLUMN_SERVINGS, servingsEaten);
-        values.put(EatenDatabaseHelper.COLUMN_GLYCEMIC_INDEX, item.getGlycemicIndex());
-        values.put(EatenDatabaseHelper.COLUMN_TIMESTAMP, System.currentTimeMillis());
-
-        db.insert(EatenDatabaseHelper.TABLE_NAME, null, values);
-        db.close();
     }
 
 

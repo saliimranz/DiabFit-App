@@ -1,5 +1,6 @@
 package com.example.diabfitapp.healthmonitoring.medication;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.diabfitapp.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class MedicationRemindersFragment extends Fragment {
@@ -44,9 +46,7 @@ public class MedicationRemindersFragment extends Fragment {
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         toolbar.setTitle("Medication Reminders");
         toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setNavigationOnClickListener(v -> {
-            requireActivity().getSupportFragmentManager().popBackStack();
-        });
+        toolbar.setNavigationOnClickListener(v -> requireActivity().getSupportFragmentManager().popBackStack());
 
         Button addMedicineButton = view.findViewById(R.id.add_medicine_button);
         addMedicineButton.setOnClickListener(v -> showAddMedicineDialog());
@@ -55,6 +55,7 @@ public class MedicationRemindersFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setAdapter(medicineAdapter);
 
+        resetLockedMedicines();
         loadMedicines();
     }
 
@@ -76,7 +77,7 @@ public class MedicationRemindersFragment extends Fragment {
             int minute = timePicker.getMinute();
             int quantity = Integer.parseInt(quantityInput.getText().toString());
 
-            saveMedicine(new Medicine(medicineName, quantity, hour, minute));
+            saveMedicine(new Medicine(0, medicineName, quantity, hour, minute, false, 0));
             dialog.dismiss();
         });
 
@@ -89,8 +90,10 @@ public class MedicationRemindersFragment extends Fragment {
                         MedicineDatabaseHelper.COLUMN_NAME + ", " +
                         MedicineDatabaseHelper.COLUMN_QUANTITY + ", " +
                         MedicineDatabaseHelper.COLUMN_HOUR + ", " +
-                        MedicineDatabaseHelper.COLUMN_MINUTE + ") VALUES (?, ?, ?, ?)",
-                new Object[]{medicine.getName(), medicine.getQuantity(), medicine.getHour(), medicine.getMinute()});
+                        MedicineDatabaseHelper.COLUMN_MINUTE + ", " +
+                        MedicineDatabaseHelper.COLUMN_LOCKED + ", " +
+                        MedicineDatabaseHelper.COLUMN_EATEN_DATE + ") VALUES (?, ?, ?, ?, ?, ?)",
+                new Object[]{medicine.getName(), medicine.getQuantity(), medicine.getHour(), medicine.getMinute(), medicine.isLocked() ? 1 : 0, medicine.getEatenDate()});
         loadMedicines();
     }
 
@@ -105,10 +108,40 @@ public class MedicationRemindersFragment extends Fragment {
                 int quantity = cursor.getInt(cursor.getColumnIndexOrThrow(MedicineDatabaseHelper.COLUMN_QUANTITY));
                 int hour = cursor.getInt(cursor.getColumnIndexOrThrow(MedicineDatabaseHelper.COLUMN_HOUR));
                 int minute = cursor.getInt(cursor.getColumnIndexOrThrow(MedicineDatabaseHelper.COLUMN_MINUTE));
-                medicines.add(new Medicine(id, name, quantity, hour, minute));
+                boolean locked = cursor.getInt(cursor.getColumnIndexOrThrow(MedicineDatabaseHelper.COLUMN_LOCKED)) == 1;
+                long eatenDate = cursor.getLong(cursor.getColumnIndexOrThrow(MedicineDatabaseHelper.COLUMN_EATEN_DATE));
+
+                medicines.add(new Medicine(id, name, quantity, hour, minute, locked, eatenDate));
             } while (cursor.moveToNext());
         }
         cursor.close();
-        medicineAdapter.setMedicines(medicines);
+        medicineAdapter.notifyDataSetChanged();
+    }
+
+    private void resetLockedMedicines() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        long currentTime = System.currentTimeMillis();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(currentTime);
+        int currentDay = calendar.get(Calendar.DAY_OF_YEAR);
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + MedicineDatabaseHelper.TABLE_MEDICINES, null);
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(MedicineDatabaseHelper.COLUMN_ID));
+                long eatenDate = cursor.getLong(cursor.getColumnIndexOrThrow(MedicineDatabaseHelper.COLUMN_EATEN_DATE));
+
+                calendar.setTimeInMillis(eatenDate);
+                int eatenDay = calendar.get(Calendar.DAY_OF_YEAR);
+
+                if (currentDay != eatenDay) {
+                    ContentValues values = new ContentValues();
+                    values.put(MedicineDatabaseHelper.COLUMN_LOCKED, 0);
+                    values.put(MedicineDatabaseHelper.COLUMN_EATEN_DATE, 0);
+                    db.update(MedicineDatabaseHelper.TABLE_MEDICINES, values, MedicineDatabaseHelper.COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
+                }
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
     }
 }

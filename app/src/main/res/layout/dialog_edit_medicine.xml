@@ -25,9 +25,8 @@
         android:inputType="number" />
 
     <Button
-        android:id="@+id/schedule_alert_button"
+        android:id="@+id/save_edit_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Schedule Alert" />
-
+        android:text="Save Edit" />
 </LinearLayout>

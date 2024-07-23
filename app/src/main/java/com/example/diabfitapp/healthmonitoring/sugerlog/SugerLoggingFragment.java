@@ -1,8 +1,15 @@
 package com.example.diabfitapp.healthmonitoring.sugerlog;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +17,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
+import java.util.Locale;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,9 +29,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.diabfitapp.R;
+import com.example.diabfitapp.healthmonitoring.medication.NotificationReceiver;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class SugerLoggingFragment extends Fragment {
@@ -29,6 +42,9 @@ public class SugerLoggingFragment extends Fragment {
     private SugarLogAdapter sugarLogAdapter;
     private List<SugarLog> sugarLogList = new ArrayList<>();
     private SugarLogDatabaseHelper sugarLogDatabaseHelper;
+    private Calendar notificationTime = Calendar.getInstance();
+    private static final String PREF_ALERT_HOUR = "alert_hour";
+    private static final String PREF_ALERT_MINUTE = "alert_minute";
 
     @Nullable
     @Override
@@ -58,7 +74,11 @@ public class SugerLoggingFragment extends Fragment {
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(v -> showAddSugerLogDialog());
 
+        Button setAlertButton = view.findViewById(R.id.set_alert_button);
+        setAlertButton.setOnClickListener(v -> showSetAlertDialog());
+
         loadSugarLogs();
+        loadAlertTime();
     }
 
     private void showAddSugerLogDialog() {
@@ -89,6 +109,87 @@ public class SugerLoggingFragment extends Fragment {
 
         dialog.show();
     }
+
+    private void showSetAlertDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_set_suger_alert, null);
+        builder.setView(dialogView);
+
+        final TimePicker timePicker = dialogView.findViewById(R.id.time_picker); // Ensure this ID matches the XML
+        Button saveButton = dialogView.findViewById(R.id.save_button); // Ensure this ID matches the XML
+        Button cancelButton = dialogView.findViewById(R.id.cancel_button); // Ensure this ID matches the XML
+
+        // Set the current time in the TimePicker
+        timePicker.setHour(notificationTime.get(Calendar.HOUR_OF_DAY));
+        timePicker.setMinute(notificationTime.get(Calendar.MINUTE));
+
+        AlertDialog dialog = builder.create();
+
+        saveButton.setOnClickListener(v -> {
+            notificationTime.set(Calendar.HOUR_OF_DAY, timePicker.getHour());
+            notificationTime.set(Calendar.MINUTE, timePicker.getMinute());
+            notificationTime.set(Calendar.SECOND, 0);
+
+            saveAlertTime(notificationTime);
+
+            // Update the button text with the selected time
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+            Button setAlertButton = requireView().findViewById(R.id.set_alert_button);
+            setAlertButton.setText("Log Alert at " + timeFormat.format(notificationTime.getTime()));
+
+            setSugarLogAlert();
+
+            // Handle saving the notification time for future use here
+            // e.g., save to SharedPreferences or a database
+
+            dialog.dismiss();
+        });
+
+        cancelButton.setOnClickListener(v -> dialog.dismiss());
+
+        dialog.show();
+    }
+
+    private void saveAlertTime(Calendar time) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(requireContext());
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(PREF_ALERT_HOUR, time.get(Calendar.HOUR_OF_DAY));
+        editor.putInt(PREF_ALERT_MINUTE, time.get(Calendar.MINUTE));
+        editor.apply();
+    }
+
+    private void loadAlertTime() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(requireContext());
+        int hour = prefs.getInt(PREF_ALERT_HOUR, notificationTime.get(Calendar.HOUR_OF_DAY));
+        int minute = prefs.getInt(PREF_ALERT_MINUTE, notificationTime.get(Calendar.MINUTE));
+        notificationTime.set(Calendar.HOUR_OF_DAY, hour);
+        notificationTime.set(Calendar.MINUTE, minute);
+        notificationTime.set(Calendar.SECOND, 0);
+
+        // Update the button text
+        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a", Locale.getDefault());
+        Button setAlertButton = requireView().findViewById(R.id.set_alert_button);
+        setAlertButton.setText("Log Alert at " + timeFormat.format(notificationTime.getTime()));
+    }
+
+    private void setSugarLogAlert() {
+        // Schedule the notification using the stored time
+        AlarmManager alarmManager = (AlarmManager) requireContext().getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(requireContext(), NotificationReceiver.class);
+        intent.putExtra("notification_type", "sugar_log");
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(requireContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
+        if (alarmManager != null) {
+            try {
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP, notificationTime.getTimeInMillis(), pendingIntent);
+            } catch (SecurityException e) {
+                Log.e("SugerLoggingFragment", "SecurityException while setting exact alarm", e);
+                // Optionally notify the user or handle the exception accordingly
+            }
+        }
+    }
+
 
     private void saveSugarLog(SugarLog sugarLog) {
         AsyncTask.execute(() -> {

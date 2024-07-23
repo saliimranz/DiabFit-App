@@ -1,4 +1,4 @@
-package com.example.diabfitapp.healthmonitoring;
+package com.example.diabfitapp.healthmonitoring.insights;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
