@@ -5,4 +5,11 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="colorFastingDefault">#FF0000</color>
+    <color name="colorPostprandialDefault">#0000FF</color>
+    <color name="colorFastingInRange">#00FF00</color>
+    <color name="colorPostprandialInRange">#00FF00</color>
+    <color name="colorDefaultCircle">#FF0000</color><!-- Darker Green for Postprandial Blood Sugar -->
+
 </resources>
