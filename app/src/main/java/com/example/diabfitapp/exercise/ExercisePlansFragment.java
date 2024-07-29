@@ -11,6 +11,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.diabfitapp.R;
+import com.example.diabfitapp.exercise.progress.ProgressMonitoringFragment;
+import com.example.diabfitapp.exercise.workout.PersonaliseWorkoutFragment;
 import com.example.diabfitapp.main.MainActivity;
 
 public class ExercisePlansFragment extends Fragment {
@@ -45,7 +47,7 @@ public class ExercisePlansFragment extends Fragment {
         progressMonitoringButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) getActivity()).replaceFragment(new PersonaliseWorkoutFragment());
+                ((MainActivity) getActivity()).replaceFragment(new ProgressMonitoringFragment());
             }
         });
 
