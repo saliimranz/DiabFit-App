@@ -51,7 +51,7 @@ public class PersonaliseWorkoutFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        exerciseAdapter = new ExerciseAdapter(exerciseList, getContext());
+        exerciseAdapter = new ExerciseAdapter(filteredExerciseList, getContext()); // Use filteredExerciseList here
         recyclerView.setAdapter(exerciseAdapter);
 
         EditText searchBar = view.findViewById(R.id.search_bar);
@@ -83,7 +83,7 @@ public class PersonaliseWorkoutFragment extends Fragment {
                 filteredExerciseList.add(exercise);
             }
         }
-        exerciseAdapter.notifyDataSetChanged();
+        exerciseAdapter.notifyDataSetChanged(); // Notify adapter of data changes
     }
 
     private class FetchExercisesTask extends AsyncTask<Void, Void, List<Exercise>> {
@@ -91,7 +91,7 @@ public class PersonaliseWorkoutFragment extends Fragment {
         protected List<Exercise> doInBackground(Void... voids) {
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
-                    .url("https://exercisedb.p.rapidapi.com/exercises?")
+                    .url("https://exercisedb.p.rapidapi.com/exercises?limit=10")
                     .get()
                     .addHeader("x-rapidapi-key", "eb54444ba3mshca0a0e83cf41280p15a72bjsn9b6d1db414b8")
                     .addHeader("x-rapidapi-host", "exercisedb.p.rapidapi.com")
@@ -128,10 +128,9 @@ public class PersonaliseWorkoutFragment extends Fragment {
             if (exercises != null) {
                 exerciseList.clear();
                 exerciseList.addAll(exercises);
-                filteredExerciseList.clear();
-                filteredExerciseList.addAll(exercises);
-                exerciseAdapter.notifyDataSetChanged();
+                filterExercises(""); // Initial display with all exercises
             }
         }
     }
 }
+
