@@ -48,34 +48,34 @@ public class ProgressExerciseAdapter extends RecyclerView.Adapter<ProgressExerci
         Exercise exercise = exerciseList.get(position);
 
         holder.nameTextView.setText(exercise.getName());
-        if (showCompletedSets) {
-            holder.setsTextView.setText("Sets: "+exercise.getCompletedSets()+"/" + exercise.getSets());
-        } else {
-            holder.setsTextView.setText("Sets: " + exercise.getSets());
-        }
+        holder.setsTextView.setText("Sets: " + exercise.getCompletedSets() + "/" + exercise.getSets());
 
         Glide.with(context).load(exercise.getGifUrl()).into(holder.gifImageView);
 
+        // Update item view based on completed sets
+        if (exercise.getCompletedSets() >= exercise.getSets()) {
+            holder.itemView.setEnabled(false);
+            holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.greyish));
+            holder.tickImageView.setVisibility(View.VISIBLE);
+        } else {
+            holder.itemView.setEnabled(true);
+            holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.white));
+            holder.tickImageView.setVisibility(View.GONE);
+        }
+
         // Make items clickable only in StartWorkoutFragment
         if (showCompletedSets) {
-            if (exercise.getCompletedSets() >= exercise.getSets()) {
-                // Exercise completed
-                holder.itemView.setEnabled(false);
-                holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.greyish));
-                holder.tickImageView.setVisibility(View.VISIBLE);
-            } else {
-                // Exercise not completed
-                holder.itemView.setEnabled(true);
-                holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.white));
-                holder.tickImageView.setVisibility(View.GONE);
+            if (exercise.getCompletedSets() < exercise.getSets()) {
                 holder.itemView.setOnClickListener(v -> {
-                    WorkoutDetailDialogFragment dialogFragment = WorkoutDetailDialogFragment.newInstance(exercise,this,position);
+                    WorkoutDetailDialogFragment dialogFragment = WorkoutDetailDialogFragment.newInstance(exercise, this, position);
                     if (context instanceof FragmentActivity) {
                         dialogFragment.show(((FragmentActivity) context).getSupportFragmentManager(), "ExerciseDetailsDialogFragment");
                     } else {
                         Toast.makeText(context, "Context is not a FragmentActivity", Toast.LENGTH_SHORT).show();
                     }
                 });
+            } else {
+                holder.itemView.setOnClickListener(null);
             }
         } else {
             holder.itemView.setOnClickListener(null);

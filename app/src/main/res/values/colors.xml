@@ -11,6 +11,9 @@
     <color name="colorPostprandialDefault">#0000FF</color>
     <color name="colorFastingInRange">#00FF00</color>
     <color name="colorPostprandialInRange">#00FF00</color>
-    <color name="colorDefaultCircle">#FF0000</color><!-- Darker Green for Postprandial Blood Sugar -->
+    <color name="colorDefaultCircle">#FF0000</color>
+    <color name="green">#228B22</color>
+    <color name="yellow">#DAA520</color>
+    <color name="red">#FF4500</color>
 
 </resources>

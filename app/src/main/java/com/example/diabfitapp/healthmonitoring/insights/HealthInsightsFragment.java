@@ -106,7 +106,7 @@ public class HealthInsightsFragment extends Fragment {
         postprandialDataSet.setDrawCircles(true);
 
         // Update circles for in-range values
-        updateCircles(fastingDataSet, 70, 120, getResources().getColor(R.color.colorFastingInRange), getResources().getColor(R.color.colorFastingDefault));
+        updateCircles(fastingDataSet, 70, 100, getResources().getColor(R.color.colorFastingInRange), getResources().getColor(R.color.colorFastingDefault));
         updateCircles(postprandialDataSet, 70, 140, getResources().getColor(R.color.colorPostprandialInRange), getResources().getColor(R.color.colorPostprandialDefault));
 
         // Create LineData with datasets

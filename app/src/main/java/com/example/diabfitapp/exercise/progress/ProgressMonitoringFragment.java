@@ -1,5 +1,7 @@
 package com.example.diabfitapp.exercise.progress;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.diabfitapp.R;
 import com.example.diabfitapp.exercise.workout.PersonaliseWorkoutFragment;
@@ -27,6 +30,9 @@ public class ProgressMonitoringFragment extends Fragment {
     private RecyclerView recyclerView;
     private ProgressExerciseAdapter progressExerciseAdapter;
     private ProgressDatabaseHelper databaseHelper;
+
+    private static final String PREFS_NAME = "ProgressMonitoringPrefs";
+    private static final String LAST_RUN_DATE_KEY = "lastRunDate";
 
     @Nullable
     @Override
@@ -52,6 +58,15 @@ public class ProgressMonitoringFragment extends Fragment {
                     .commit();
         });
 
+        Button HistoryButton = view.findViewById(R.id.history_button);
+        HistoryButton.setOnClickListener(v -> {
+            HistoryFragment HistoryFragment = new HistoryFragment();
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, HistoryFragment)
+                    .addToBackStack(null)
+                    .commit();
+        });
+
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -60,6 +75,14 @@ public class ProgressMonitoringFragment extends Fragment {
         // Get current date
         String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         List<Exercise> exerciseList = databaseHelper.getExercisesByDate(currentDate);
+
+        SharedPreferences prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        String lastRunDate = prefs.getString(LAST_RUN_DATE_KEY, "");
+
+        if (!currentDate.equals(lastRunDate)) {
+            databaseHelper.deleteAllExercises();
+            prefs.edit().putString(LAST_RUN_DATE_KEY, currentDate).apply();
+        }
 
         progressExerciseAdapter = new ProgressExerciseAdapter(exerciseList, false);
         recyclerView.setAdapter(progressExerciseAdapter);

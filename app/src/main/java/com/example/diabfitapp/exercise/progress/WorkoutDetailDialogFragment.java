@@ -3,6 +3,8 @@ package com.example.diabfitapp.exercise.progress;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +21,12 @@ import com.bumptech.glide.Glide;
 import com.example.diabfitapp.R;
 import com.example.diabfitapp.exercise.workout.Exercise;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
 public class WorkoutDetailDialogFragment extends DialogFragment {
 
     private static final String ARG_EXERCISE = "exercise";
@@ -29,15 +37,16 @@ public class WorkoutDetailDialogFragment extends DialogFragment {
     private int completedSets;
     private ProgressExerciseAdapter adapter;
     private int position;
+    private StartWorkoutFragment startWorkoutFragment; // Reference to the StartWorkoutFragment
 
     public static WorkoutDetailDialogFragment newInstance(Exercise exercise, ProgressExerciseAdapter adapter, int position) {
         WorkoutDetailDialogFragment fragment = new WorkoutDetailDialogFragment();
-        fragment.adapter = adapter;
-        fragment.position = position;
         Bundle args = new Bundle();
         args.putSerializable(ARG_EXERCISE, exercise);
         args.putInt(ARG_POSITION, position);
         fragment.setArguments(args);
+        fragment.adapter = adapter;
+        fragment.position = position;
         return fragment;
     }
 
@@ -45,6 +54,11 @@ public class WorkoutDetailDialogFragment extends DialogFragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         databaseHelper = new ProgressDatabaseHelper(context);
+
+        // Attempt to find the StartWorkoutFragment
+        if (getParentFragment() instanceof StartWorkoutFragment) {
+            startWorkoutFragment = (StartWorkoutFragment) getParentFragment();
+        }
     }
 
     @NonNull
@@ -91,10 +105,15 @@ public class WorkoutDetailDialogFragment extends DialogFragment {
                 completedSetsTextView.setText(String.valueOf(completedSets));
                 exercise.setCompletedSets(completedSets);
                 databaseHelper.updateExercise(exercise);
+                Log.d("WorkoutDetailDialog", "Incremented: " + completedSets);
                 if (completedSets == exercise.getSets()) {
                     Toast.makeText(requireContext(), "Reached today's goal!", Toast.LENGTH_SHORT).show();
-                    // Notify the adapter about the change
                     adapter.updateItem(position, exercise);
+                }
+                updateWorkoutSession();
+                if (startWorkoutFragment != null) {
+                    startWorkoutFragment.refreshRecyclerView();
+                    Log.d("WorkoutDetailDialog", "RecyclerView refreshed after increment.");
                 }
             }
         });
@@ -107,6 +126,11 @@ public class WorkoutDetailDialogFragment extends DialogFragment {
                 databaseHelper.updateExercise(exercise);
                 // Notify the adapter about the change
                 adapter.updateItem(position, exercise);
+                updateWorkoutSession();
+                // Refresh the StartWorkoutFragment's RecyclerView
+                if (startWorkoutFragment != null) {
+                    startWorkoutFragment.refreshRecyclerView();
+                }
             }
         });
 
@@ -114,6 +138,48 @@ public class WorkoutDetailDialogFragment extends DialogFragment {
                 .setPositiveButton("Close", (dialog, id) -> dialog.dismiss());
 
         return builder.create();
+    }
+
+    private void updateWorkoutSession() {
+        if (startWorkoutFragment == null) return;
+
+        String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+        long timeInMilliseconds = SystemClock.uptimeMillis() - startWorkoutFragment.startTime;
+        int timeSpent = (int) (timeInMilliseconds / 1000); // Time in seconds
+        double carbsBurnt = calculateCarbsBurnt(timeSpent);
+        double workoutPercentage = calculateWorkoutPercentage(startWorkoutFragment.progressExerciseList);
+
+        List<String> exerciseNames = new ArrayList<>();
+        List<Integer> completedSetsList = new ArrayList<>();
+        List<Integer> targetSets = new ArrayList<>();
+
+        for (Exercise exercise : startWorkoutFragment.progressExerciseList) {
+            exerciseNames.add(exercise.getName());
+            completedSetsList.add(exercise.getCompletedSets());
+            targetSets.add(exercise.getSets());
+        }
+
+        WorkoutSession session = new WorkoutSession(0, currentDate, timeSpent, carbsBurnt, workoutPercentage, exerciseNames, completedSetsList, targetSets);
+        databaseHelper.insertOrUpdateWorkoutSession(session);
+    }
+
+    private double calculateCarbsBurnt(int timeSpent) {
+        // Example logic to calculate carbs burnt based on time spent
+        return timeSpent * 0.1;
+    }
+
+    private double calculateWorkoutPercentage(List<Exercise> exercises) {
+        int totalSets = 0;
+        int completedSets = 0;
+
+        // Iterate through each exercise to sum up total and completed sets
+        for (Exercise exercise : exercises) {
+            totalSets += exercise.getSets();
+            completedSets += exercise.getCompletedSets();
+        }
+
+        // Calculate and return the percentage of completed sets
+        return totalSets == 0 ? 0 : (double) completedSets / totalSets * 100;
     }
 
     private String formatList(String title, String listString) {
