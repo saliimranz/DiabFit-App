@@ -21,6 +21,7 @@
             android:layout_marginBottom="8dp"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -54,6 +55,7 @@
             android:layout_marginTop="8dp"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/meal_image" />
@@ -62,6 +64,7 @@
             android:id="@+id/meal_carbs"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/meal_title" />
@@ -70,6 +73,7 @@
             android:id="@+id/meal_calories"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/meal_carbs" />
@@ -79,6 +83,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/meal_calories" />
 

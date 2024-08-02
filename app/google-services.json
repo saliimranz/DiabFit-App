@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "391481357214",
+    "project_id": "diabfit-app",
+    "storage_bucket": "diabfit-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391481357214:android:f724bda16c7b1924bc9c8f",
+        "android_client_info": {
+          "package_name": "com.example.diabfitapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCe66gEl9BHEltSjWX2ZNIinXou_BUJtD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

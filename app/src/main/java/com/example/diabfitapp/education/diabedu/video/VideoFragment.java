@@ -35,12 +35,12 @@ public class VideoFragment extends Fragment implements VideoAdapter.OnItemClickL
 
     private List<VideoItem> getDummyData() {
         List<VideoItem> videos = new ArrayList<>();
-        videos.add(new VideoItem("Video 1", "Description 1", R.drawable.ic_video_placeholder, "https://dummyurl.com/video1.mp4"));
-        videos.add(new VideoItem("Video 2", "Description 2", R.drawable.ic_video_placeholder, "https://dummyurl.com/video2.mp4"));
-        videos.add(new VideoItem("Video 3", "Description 3", R.drawable.ic_video_placeholder, "https://dummyurl.com/video3.mp4"));
-        videos.add(new VideoItem("Video 1", "Description 1", R.drawable.ic_video_placeholder, "https://dummyurl.com/video1.mp4"));
-        videos.add(new VideoItem("Video 2", "Description 2", R.drawable.ic_video_placeholder, "https://dummyurl.com/video2.mp4"));
-        videos.add(new VideoItem("Video 3", "Description 3", R.drawable.ic_video_placeholder, "https://dummyurl.com/video3.mp4"));
+        videos.add(new VideoItem("Insullin Titration", "Titration Procedure for the Insulin", R.drawable.insulin_1, "https://diabfit-data-uploads.s3.us-east-2.amazonaws.com/Insulin+titration.mp4"));
+        videos.add(new VideoItem("Insulin Safety & Insulin prescribing standards", "Disscussion about Insulin Safety Procedures taken by doctors and their mistakes along the way", R.drawable.ic_2_1, "https://diabfit-data-uploads.s3.us-east-2.amazonaws.com/Insulin+safety_+Insulin+prescribing+standards.mp4"));
+        videos.add(new VideoItem("Type 1 Diabetes Nutrition", "A comprehensive diet plan for type 1 diabates patients for healthy lifestyle", R.drawable.ic_3_1, "https://diabfit-data-uploads.s3.us-east-2.amazonaws.com/What+All+Parents+Need+to+Know+About+Type+1+Diabetes+Nutrition.mp4 "));
+        videos.add(new VideoItem("Insullin Titration", "Titration Procedure for the Insulin", R.drawable.insulin_2, "https://diabfit-data-uploads.s3.us-east-2.amazonaws.com/Insulin+titration.mp4"));
+        videos.add(new VideoItem("Insulin Safety & Insulin prescribing standards", "Disscussion about Insulin Safety Procedures taken by doctors and their mistakes along the way", R.drawable.ic_2_2, "https://diabfit-data-uploads.s3.us-east-2.amazonaws.com/Insulin+safety_+Insulin+prescribing+standards.mp4"));
+        videos.add(new VideoItem("Type 1 Diabetes Nutrition", "A comprehensive diet plan for type 1 diabates patients for healthy lifestyle", R.drawable.ic_3_2, "https://diabfit-data-uploads.s3.us-east-2.amazonaws.com/What+All+Parents+Need+to+Know+About+Type+1+Diabetes+Nutrition.mp4 "));
 
         return videos;
     }

@@ -21,6 +21,7 @@ import com.example.diabfitapp.nutrition.food.EatenDatabaseHelper;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
+import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,11 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
         dbHelper = new EatenDatabaseHelper(this);
 
+        FirebaseApp.initializeApp(this);
+
         if (savedInstanceState == null) {
-            MainFragment mainFragment = new MainFragment();
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_container, mainFragment);
-            transaction.commit();
+            replaceFragment(new LoginFragment());
         }
     }
 
