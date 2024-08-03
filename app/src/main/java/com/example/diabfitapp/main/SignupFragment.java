@@ -60,6 +60,7 @@ public class SignupFragment extends Fragment {
                                         Map<String, Object> userData = new HashMap<>();
                                         userData.put("name", name);
                                         userData.put("email", email);
+                                        Toast.makeText(getActivity(), "Registration successful.", Toast.LENGTH_SHORT).show();
 
                                         db.collection("users").document(user.getUid())
                                                 .set(userData)
