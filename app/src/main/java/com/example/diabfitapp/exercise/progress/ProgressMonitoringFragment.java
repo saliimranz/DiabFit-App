@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.diabfitapp.R;
 import com.example.diabfitapp.exercise.workout.PersonaliseWorkoutFragment;
@@ -50,13 +51,6 @@ public class ProgressMonitoringFragment extends Fragment {
         toolbar.setNavigationOnClickListener(v -> requireActivity().getSupportFragmentManager().popBackStack());
 
         Button startWorkoutButton = view.findViewById(R.id.start_workout_button);
-        startWorkoutButton.setOnClickListener(v -> {
-            StartWorkoutFragment startWorkoutFragment = new StartWorkoutFragment();
-            requireActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, startWorkoutFragment)
-                    .addToBackStack(null)
-                    .commit();
-        });
 
         Button HistoryButton = view.findViewById(R.id.history_button);
         HistoryButton.setOnClickListener(v -> {
@@ -86,6 +80,18 @@ public class ProgressMonitoringFragment extends Fragment {
 
         progressExerciseAdapter = new ProgressExerciseAdapter(exerciseList, false);
         recyclerView.setAdapter(progressExerciseAdapter);
+
+        startWorkoutButton.setOnClickListener(v -> {
+            if (exerciseList.isEmpty()) {
+                Toast.makeText(getContext(), "No exercises available to start a workout.", Toast.LENGTH_SHORT).show();
+            } else {
+                StartWorkoutFragment startWorkoutFragment = new StartWorkoutFragment();
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, startWorkoutFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         Button addExerciseButton = view.findViewById(R.id.add_exercise_button);
         addExerciseButton.setOnClickListener(v -> {

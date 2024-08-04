@@ -18,6 +18,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DiabatesEducationFragment extends Fragment {
 
+    private int selectedTabId = R.id.nav_articles;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,32 +39,37 @@ public class DiabatesEducationFragment extends Fragment {
         });
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = null;
-                int itemId = item.getItemId();
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            Fragment selectedFragment = null;
+            int itemId = item.getItemId();
+            selectedTabId = itemId;
 
-                if (itemId == R.id.nav_articles) {
-                    selectedFragment = new ArticlesFragment();
-                } else if (itemId == R.id.nav_videos) {
-                    selectedFragment = new VideoFragment();
-                } else if (itemId == R.id.nav_tutorials) {
-                    selectedFragment = new TutorialFragment();
-                }
-
-                if (selectedFragment != null) {
-                    getChildFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_container, selectedFragment)
-                            .commit();
-                }
-                return true;
+            if (itemId == R.id.nav_articles) {
+                selectedFragment = new ArticlesFragment();
+            } else if (itemId == R.id.nav_videos) {
+                selectedFragment = new VideoFragment();
+            } else if (itemId == R.id.nav_tutorials) {
+                selectedFragment = new TutorialFragment();
             }
+
+            if (selectedFragment != null) {
+                getChildFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, selectedFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+            return true;
         });
 
-        // Load default fragment
         if (savedInstanceState == null) {
-            bottomNavigationView.setSelectedItemId(R.id.nav_articles);
+            bottomNavigationView.setSelectedItemId(selectedTabId);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        BottomNavigationView bottomNavigationView = getView().findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(selectedTabId);
     }
 }

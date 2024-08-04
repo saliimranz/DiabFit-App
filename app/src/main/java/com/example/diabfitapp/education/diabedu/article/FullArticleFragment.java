@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.diabfitapp.R;
@@ -41,6 +42,14 @@ public class FullArticleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        toolbar.setTitle("Detailed Article");
+        toolbar.setNavigationIcon(R.drawable.ic_back); // Add your back icon here
+        toolbar.setNavigationOnClickListener(v -> {
+            // Navigate back to the previous fragment
+            requireActivity().getSupportFragmentManager().popBackStack();
+        });
 
         TextView titleTextView = view.findViewById(R.id.full_article_title);
         TextView authorTextView = view.findViewById(R.id.full_article_author);

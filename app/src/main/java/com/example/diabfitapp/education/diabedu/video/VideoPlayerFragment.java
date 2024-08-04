@@ -11,6 +11,7 @@ import android.widget.MediaController;
 import android.widget.VideoView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
@@ -37,6 +38,14 @@ public class VideoPlayerFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        toolbar.setTitle("Video Player");
+        toolbar.setNavigationIcon(R.drawable.ic_back); // Add your back icon here
+        toolbar.setNavigationOnClickListener(v -> {
+            // Navigate back to the previous fragment
+            requireActivity().getSupportFragmentManager().popBackStack();
+        });
 
         VideoView videoView = view.findViewById(R.id.video_view);
         FrameLayout videoContainer = view.findViewById(R.id.video_container);

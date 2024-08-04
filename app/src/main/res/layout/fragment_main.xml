@@ -1,44 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@android:color/white"
     tools:context=".main.MainFragment">
+
+    <!-- Sign Out Button -->
+    <Button
+        android:id="@+id/btn_top_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Out"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <!-- Nutrition Tracking Button -->
+
+    <!-- Exercise Plans Button -->
 
     <Button
         android:id="@+id/btn_nutrition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="226dp"
-        android:text="Nutrition Tracking" />
+        android:layout_marginTop="188dp"
+        android:text="Nutrition Tracking"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_top_right" />
 
     <Button
         android:id="@+id/btn_exercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_nutrition"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:text="Exercise Plans" />
+        android:text="Exercise Plans"
+        app:layout_constraintTop_toBottomOf="@id/btn_nutrition"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
 
+    <!-- Health Monitoring Button -->
     <Button
         android:id="@+id/btn_health_monitoring"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_exercise"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:text="Health Monitoring" />
+        android:text="Health Monitoring"
+        app:layout_constraintTop_toBottomOf="@id/btn_exercise"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
 
+    <!-- Education Support Button -->
     <Button
         android:id="@+id/btn_education"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_health_monitoring"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="31dp"
-        android:text="Education Support" />
-</RelativeLayout>
+        android:text="Education Support"
+        app:layout_constraintTop_toBottomOf="@id/btn_health_monitoring"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
