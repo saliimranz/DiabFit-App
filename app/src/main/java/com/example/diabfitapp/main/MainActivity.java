@@ -22,6 +22,8 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,8 +47,17 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseApp.initializeApp(this);
 
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
         if (savedInstanceState == null) {
-            replaceFragment(new LoginFragment());
+            if (currentUser != null) {
+                // User is logged in, navigate to MainFragment
+                replaceFragment(new MainFragment());
+            } else {
+                // No user is logged in, navigate to LoginFragment
+                replaceFragment(new LoginFragment());
+            }
         }
     }
 

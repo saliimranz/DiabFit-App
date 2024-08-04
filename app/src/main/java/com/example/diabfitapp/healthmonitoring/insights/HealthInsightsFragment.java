@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,7 @@ import java.io.FileOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -54,6 +56,7 @@ public class HealthInsightsFragment extends Fragment {
     private SimpleDateFormat outputDateFormat;
     private LineChart lineChart;
     private List<SugarLog> sugarLogs;
+    private List<SimpleDateFormat> inputDateFormats;
 
     @Nullable
     @Override
@@ -78,6 +81,10 @@ public class HealthInsightsFragment extends Fragment {
         sugarLogDatabaseHelper = new SugarLogDatabaseHelper(requireContext());
         inputDateFormat = new SimpleDateFormat("dd MMM yyyy h:mm:ss a", Locale.getDefault());
         outputDateFormat = new SimpleDateFormat("MMM dd", Locale.getDefault());
+
+        inputDateFormats = new ArrayList<>();
+        inputDateFormats.add(new SimpleDateFormat("dd MMM yyyy h:mm:ss a", Locale.getDefault()));
+        inputDateFormats.add(new SimpleDateFormat("MMM d, yyyy h:mm:ss a", Locale.getDefault()));
 
         sugarLogs = sugarLogDatabaseHelper.getAllSugarLogs();
         List<Entry> fastingEntries = new ArrayList<>();
@@ -123,6 +130,7 @@ public class HealthInsightsFragment extends Fragment {
             public String getFormattedValue(float value) {
                 int index = Math.round(value);
                 if (index >= 0 && index < sugarLogs.size()) {
+                   String sss = sugarLogs.get(index).getTime();
                     return formatTime(sugarLogs.get(index).getTime());
                 }
                 return "";
@@ -153,12 +161,22 @@ public class HealthInsightsFragment extends Fragment {
     }
 
     private String formatTime(String time) {
-        try {
-            return outputDateFormat.format(inputDateFormat.parse(time));
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return "";
+        Date date = parseDate(time);
+        if (date != null) {
+            return outputDateFormat.format(date);
         }
+        return "";
+    }
+
+    private Date parseDate(String time) {
+        for (SimpleDateFormat format : inputDateFormats) {
+            try {
+                return format.parse(time);
+            } catch (ParseException e) {
+                // Ignore and try the next format
+            }
+        }
+        return null; // Return null if no format matches
     }
 
     private void updateCircles(LineDataSet dataSet, float minRange, float maxRange, int inRangeColor, int outOfRangeColor) {
@@ -182,10 +200,13 @@ public class HealthInsightsFragment extends Fragment {
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(requireActivity(),
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            Log.d("HealthInsightsFragment","Permission denied");
         } else {
             try {
                 // Create a file for the PDF
-                File pdfFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "Sugar_log.pdf");
+                String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+                File pdfFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "Sugar_Log_" + timestamp + ".pdf");
+
 
                 // Create a PDF document
                 PdfWriter writer = new PdfWriter(new FileOutputStream(pdfFile));
