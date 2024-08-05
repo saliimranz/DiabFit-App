@@ -53,13 +53,6 @@ public class ProgressMonitoringFragment extends Fragment {
         Button startWorkoutButton = view.findViewById(R.id.start_workout_button);
 
         Button HistoryButton = view.findViewById(R.id.history_button);
-        HistoryButton.setOnClickListener(v -> {
-            HistoryFragment HistoryFragment = new HistoryFragment();
-            requireActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, HistoryFragment)
-                    .addToBackStack(null)
-                    .commit();
-        });
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -88,6 +81,19 @@ public class ProgressMonitoringFragment extends Fragment {
                 StartWorkoutFragment startWorkoutFragment = new StartWorkoutFragment();
                 requireActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, startWorkoutFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
+        HistoryButton.setOnClickListener(v -> {
+            List<WorkoutSession> workoutSessions = databaseHelper.getAllWorkoutSessions();
+            if (workoutSessions.isEmpty()) {
+                Toast.makeText(getContext(), "No workout history available.", Toast.LENGTH_SHORT).show();
+            } else {
+                HistoryFragment historyFragment = new HistoryFragment();
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, historyFragment)
                         .addToBackStack(null)
                         .commit();
             }

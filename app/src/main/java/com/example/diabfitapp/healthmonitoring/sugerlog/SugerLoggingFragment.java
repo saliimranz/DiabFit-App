@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
 import java.util.Locale;
 
 
@@ -98,13 +100,19 @@ public class SugerLoggingFragment extends Fragment {
         AlertDialog dialog = builder.create();
 
         addButton.setOnClickListener(v -> {
-            int sugarLevel = Integer.parseInt(sugarInput.getText().toString());
-            String type = typeSpinner.getSelectedItem().toString();
-            String time = java.text.DateFormat.getDateTimeInstance().format(new java.util.Date());
+            String sugarLevelStr = sugarInput.getText().toString().trim();
 
-            SugarLog sugarLog = new SugarLog(sugarLevel, type, time);
-            saveSugarLog(sugarLog);
-            dialog.dismiss();
+            if (sugarLevelStr.isEmpty()) {
+                Toast.makeText(getContext(), "Please enter a sugar level.", Toast.LENGTH_SHORT).show();
+            } else {
+                int sugarLevel = Integer.parseInt(sugarLevelStr);
+                String type = typeSpinner.getSelectedItem().toString();
+                String time = java.text.DateFormat.getDateTimeInstance().format(new java.util.Date());
+
+                SugarLog sugarLog = new SugarLog(sugarLevel, type, time);
+                saveSugarLog(sugarLog);
+                dialog.dismiss();
+            }
         });
 
         dialog.show();

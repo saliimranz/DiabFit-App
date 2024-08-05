@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -72,13 +74,21 @@ public class MedicationRemindersFragment extends Fragment {
         AlertDialog dialog = builder.create();
 
         scheduleAlertButton.setOnClickListener(v -> {
-            String medicineName = medicineNameInput.getText().toString();
-            int hour = timePicker.getHour();
-            int minute = timePicker.getMinute();
-            int quantity = Integer.parseInt(quantityInput.getText().toString());
+            String medicineName = medicineNameInput.getText().toString().trim();
+            String quantityStr = quantityInput.getText().toString().trim();
 
-            saveMedicine(new Medicine(0, medicineName, quantity, hour, minute, false, 0));
-            dialog.dismiss();
+            if (medicineName.isEmpty()) {
+                Toast.makeText(getContext(), "Please enter a medicine name.", Toast.LENGTH_SHORT).show();
+            } else if (quantityStr.isEmpty()) {
+                Toast.makeText(getContext(), "Please enter a quantity.", Toast.LENGTH_SHORT).show();
+            } else {
+                int hour = timePicker.getHour();
+                int minute = timePicker.getMinute();
+                int quantity = Integer.parseInt(quantityStr);
+
+                saveMedicine(new Medicine(0, medicineName, quantity, hour, minute, false, 0));
+                dialog.dismiss();
+            }
         });
 
         dialog.show();
